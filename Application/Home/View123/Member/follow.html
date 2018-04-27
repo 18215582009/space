@@ -1,0 +1,83 @@
+<extend name="_Layout/base_tabbar"/>
+
+<block name="content">
+	<div class="comment_top" id="follow-list">
+		
+	</div>
+	<div id="loading" class="feed-loading" style="display: none;">
+		<span>加载中…</span>
+	</div>   	
+</block>
+
+<block name="script">
+	<script type="text/template" id="t-follow">
+		<%for(i in follow_list){%>
+		<div class="fans_unit">
+			<a href="<%=follow_list[i].info_url%>">
+				<img src="<%=follow_list[i].member_avatar%>" />
+				<span class="user_name"><%=follow_list[i].member_name%></span>
+			</a>
+		</div>
+		<%}%>
+	</script>
+	<script>
+		var member_id  = {$member_id|default=0}
+	
+//		var triggerDistance = 50;
+		
+		var page      = 1;
+		var isLoading = false;
+		var isEnd     = false;
+		
+		function addFollow(){
+			$('#loading').show();
+			isLoading = true;
+			
+			$.ajax({
+				type: 'post',
+				dataType: 'json',
+				url: '{:U("Follow/page")}',
+				data: {
+					page: page,
+					member_id:member_id,
+					type: 'follow',
+				},
+				success: function(data){
+					$('#loading').hide();
+					isLoading = false;
+					page ++;
+					
+					if(data.follow_list.length == 0){
+						isEnd = true;
+						return;
+					}
+					
+					var html = template.render('t-follow', data);
+					$('#follow-list').append(html);
+				},
+				error: function(){
+					$('#loading').hide();
+					followIsLoading = false;
+				}
+			});
+		};
+		
+		addFollow();
+		
+		infiniteScroll(function(){
+			if(isEnd || isLoading){
+				return;
+			}
+			
+			addFollow();
+		});		
+			
+//		$(".weui_tab_bd").scroll(function(){
+//			var height  = $(".weui_tab_bd").scrollTop() + triggerDistance;
+//			var bHeight = $(".scroll").height() - $(".weui_tab_bd").height();
+//			if(height >= bHeight && !isLoading && !isEnd){
+//				addFollow();
+//			}
+//		});	
+	</script>
+</block>

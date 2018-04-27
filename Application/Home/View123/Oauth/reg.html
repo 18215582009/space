@@ -1,0 +1,57 @@
+<extend name="_Layout/base_not_tabbar"/>
+
+<block name="content">
+	<form action="__SELF__" method="post">
+		<div class="weui_cells_title">绑定微信号</div>
+		<div class="weui_cells weui_cells_form">
+		    <div class="weui_cell">
+		        <div class="weui_cell_hd">
+		        	<label class="weui_label">用户名</label>
+		        </div>
+		        <div class="weui_cell_bd weui_cell_primary">
+		            <input class="weui_input" type="text" placeholder="请输入用户名" name="member_name" value="{:session('oauth_userinfo.nickname')}">
+		        </div>
+		    </div>
+		</div>	
+		
+		<div class="weui_btn_area">
+	        <a class="weui_btn weui_btn_default" href="javascript:" id="submit">提交</a>
+	    </div>		
+	</form>
+</block>
+
+<block name="style">
+	
+</block>
+
+<block name="script">
+	<script>
+		$(function(){
+			$('#submit').on('click', function(){
+				$.weui.loading();
+				
+				$.ajax({
+					type: 'post',
+					dataType: 'json',
+					url: '__SELF__',
+					data: $('form').serialize(),
+					success: function(res){
+						$.weui.hideLoading();
+						
+						if(res.status){
+							$.weui.toast(res.info, function(){
+								res.url && (location = res.url);
+							});
+						}else{
+							$.weui.alert(res.info);
+						}
+					},
+					error: function(){
+						$.weui.hideLoading();
+						$.weui.alert('网络错误');						
+					}
+				});
+			});
+		});
+	</script>
+</block>

@@ -1,0 +1,1 @@
+a:6:{i:0;s:9:"follow_id";i:1;s:9:"member_id";i:2;s:16:"follow_member_id";i:3;s:12:"follow_ctime";s:3:"_pk";s:9:"follow_id";s:5:"_type";a:4:{s:9:"follow_id";s:16:"int(10) unsigned";s:9:"member_id";s:16:"int(10) unsigned";s:16:"follow_member_id";s:16:"int(10) unsigned";s:12:"follow_ctime";s:16:"int(10) unsigned";}}

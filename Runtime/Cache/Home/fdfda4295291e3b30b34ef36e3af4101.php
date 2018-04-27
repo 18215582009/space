@@ -1,0 +1,290 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html>
+
+<head>
+	<title>126+发布</title>
+	<meta charset="utf-8" />
+	<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="stylesheet" type="text/css" href="css/base.css" />
+</head>
+<!-- [if lt IE 9]>
+<script type="text/javascript" src="js/html5.js"></script>
+<script type="text/javascript" src="js/respond.min.js"></script>
+[endif] -->
+<style type="text/css">
+	* {
+		margin: 0px;
+		padding: 0px;
+		box-sizing: border-box;
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	body {
+		font-family: 微软雅黑;
+	}
+
+	.publish {
+		position: relative;
+		width: 100%;
+		height: 260px;
+	}
+
+	.publish textarea {
+		margin: 10px 3% 50px 3%;
+		border: 1px solid #ddd;
+		width: 94%;
+		font-size: 12px;
+		min-height: 200px;
+		line-height: 20px;
+		padding: 8px;
+		border-radius: 5px;
+		outline: none;
+		letter-spacing: 1px;
+	}
+
+	.limitnum {
+		position: absolute;
+		top: 190px;
+		right: 4%;
+		color: #666;
+		font-size: 12px;
+	}
+
+	.publish-img {
+		width: 100%;
+		min-height: 300px;
+		padding: 0 3%;
+	}
+
+	.limitnumimg {
+		color: #666;
+		font-size: 16px;
+	}
+
+	.publish-img-list {
+		margin-top: 10px;
+		width: 100%;
+	}
+
+	.publish-img-list li {
+		float: left;
+		margin-top: 5px;
+		margin-right: 2%;
+		width: 23%;
+		height: 90px;
+	}
+
+	.publish-img-list img {
+		width: 100%;
+		height: auto;
+	}
+
+	.publish-sub {
+		position: fixed;
+		bottom: 0;
+		height: 50px;
+		width: 100%;
+		text-align: center;
+		background-color: #e68d61;
+	}
+
+	.publish-sub span {
+		color: #fff;
+		font-size: 18px;
+		line-height: 50px;
+		letter-spacing: 1px;
+	}
+
+	.articleBox {
+		height: 200px;
+		width: 90%;
+		margin: 15px 5%;
+		border: 1px solid #eee;
+		padding: 5px;
+		overflow: auto;
+		overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.add-img {
+		position: relative;
+	}
+
+	.add-img>input {
+		position: absolute;
+		left: 0;
+		opacity: 0;
+		height: 90px;
+		width: 90px;
+	}
+
+	.dc-add-img {
+		position: relative;
+	}
+
+	.dc-del {
+		position: absolute;
+		right: -5px;
+		top: -5px;
+		width: 18px;
+		height: 18px;
+		background: #e68d61;
+		border-radius: 25px;
+		box-shadow: 2px 2px 5px 0px black;
+		cursor: pointer;
+		color: #fff;
+		font-weight: bold;
+		line-height: 15px;
+		text-align: center;
+	}
+
+	.dc-input {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+</style>
+
+<body>
+	<div class="publish">
+		<!-- <div id="myDiv" contenteditable="true" @keyup.enter="onEnterDown" @keyup="change" class="articleBox"></div> -->
+		<textarea maxlength="140" placeholder="请输入~"></textarea>
+		<div class="limitnum">
+			<span class="word">0</span>/140</div>
+	</div>
+
+
+	<div class="publish-img">
+		<div class="limitnumimg">图片上传(
+			<span class="numimg">0</span>/9)</div>
+		<div class="publish-img-list" id="unit-img">
+			<li class="add-img">
+				<img src="img/upload.png">
+				<input class='dc-input' type='file' accept="image/*" value='' onchange="uploadImg(this)">
+			</li>
+		</div>
+	</div>
+	<div class="publish-sub">
+		<span>提交</span>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript">
+	//输入字数限制
+	$(function () {
+		$("textarea").keyup(function () {
+			var num = $(this).val().length;
+			if (num <= 140) { num = num; }
+			else { $(num).substr(0, 140) }
+			$(".word").html(num)
+		});
+		//图片上传限制
+
+		//图片高度
+
+		var w = $(".publish-img-list li").css("width");
+		$(".publish-img-list li").css("height", w);
+	})
+	//自定义输入框
+	// var content_html=""
+	// function onEnterDown() {
+	// 	this.mPostHtml = formatSolution(this.mInputText)
+	// }
+	// function formatSolution(s) {
+	// 	if (s)
+	// 		return s.replace(/\n/g, '<br>')
+	// 	else
+	// 		return ''
+	// }
+	// function change() {
+	// 	var divNode = document.getElementById("myDiv");
+	// 	this.mPostHtml = divNode.innerHTML
+	// }
+
+	// 上传图片
+	function delimg(obj) {
+		if (confirm("确认删除吗")) {
+			var n = $('.numimg').html()
+			n--
+			$('.numimg').html(n)
+			$(obj).parents('.dc-add-img').remove();
+			temp = document.getElementById('unit-img');
+			lis = temp.getElementsByTagName('img');
+			var last_img = $(".add-img").last().find('img').attr('src'); //上传最后一张图片的值
+			if (lis.length == 9 && last_img != 'img/upload.png') {
+				$(".add-img").css("display", "none");
+			} else {
+				$(".add-img").css("display", "inline-block");
+			}
+
+		} else {
+			return;
+		}
+
+	}
+	$(".dc-input").change(function () {
+		//上传图片数量限制
+		lis = $('#unit-img img');
+		temp = document.getElementById('unit-img');
+		lis = temp.getElementsByTagName('img');
+		var n = $('.numimg').html()
+		n++
+		$('.numimg').html(n)
+		if (lis.length == 9) {
+			$(".add-img").css("display", "none");
+
+		} else {
+
+			$(".add-img").css("display", "");
+		}
+		//函数完成后清除input的val 避免无法重复上传同一个图片
+		$(this).val("");
+	})
+	$('.publish-sub').click(function () {
+
+		if ($("textarea").val()) {
+			var postData={
+				shop_id:'',
+				content:'',
+				images:[]
+			}
+			var len = $('.dc-add-img')
+			
+			for (var i = 0; i < len.length; i++) {
+				// var b = len.eq(i).attr("src");
+				var b=len.eq(i).css("backgroundImage").replace('url(','').replace(')','').replace('"','').replace('"','');
+				postData.images.push(b)
+			}
+			if(postData.images.length<1){
+				// 如果没有图片
+				tip.alert('请至少选择一张图片！');
+			}else{
+				// 提交 shop_id 商户id
+				if(GetUrlString('id')){
+					postData.shop_id=GetUrlString('id')
+				}else{
+					postData.shop_id=235
+				}
+				
+				postData.content=$("textarea").val()
+				getInfo('post',wrUrl+'/feed/post',postData,toCircle)
+			}
+		} else {
+			tip.alert('请输入内容！');
+		}
+	})
+	function toCircle(r){
+		if(r.code==200){	
+			window.location.href='circle.html?id='+GetUrlString('id')+'&code=1'
+		}else{	
+			tip.flag('请求错误！', 'error');		
+		}
+	}
+</script>
+
+</html>

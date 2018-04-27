@@ -1,0 +1,310 @@
+<extend name="_Layout/base_tabbar"/>
+
+<block name="content">
+	<div class="comment_unit">
+		<if condition="$feed_info['repost_feed_id'] gt 0">
+			<div class="comment_unit">
+				<div class="comment_top">
+					<a href="{:U('Member/info', array('member_id'=>$feed_info['member']['member_id']))}">
+						<img src="{$feed_info['member']['member_avatar']}" />
+						<p class="user_name">{$feed_info['member']['member_name']}</p>
+						<p class="user_wechat">微信号:{$feed_info['member']['member_wechat_account']}</p>
+					</a>
+				</div>
+				<div class="default-content">
+					<p class="default-text">{$feed_info['feed_content']}</p>
+				</div>
+				<div class="info_text extend-content">
+					<div>
+						<a style="color: #598abf;" href="{$feed_info.retweeted.member.info_url}">@{$feed_info.retweeted.member.member_name}:</a>
+						<a href="{$feed_info.retweeted['info_url']}">{$feed_info.retweeted.feed_content}</a>
+					</div>
+					<div class="comment_imgs" style="margin-top: 7px;">
+						<div class="imgs_list">
+							<img class="imgsView" src="{$feed_info.retweeted.cover_url}" data-pics="{$feed_info.retweeted.pics_url}" />
+						</div>
+						<span class="album_number">{$feed_info.retweeted.pics_count}</span>
+					</div>
+				</div>	
+				<div class="operate" style="border: 0;">
+					<if condition="$feed_info['is_fav']">
+						<a class="operate_col zan_cur delFav" data-feed-id="{$feed_info['feed_id']}">{$feed_info['fav_count']}</a>
+					<else />	
+						<a class="operate_col zan addFav" data-feed-id="{$feed_info['feed_id']}">{$feed_info['fav_count']}</a>
+					</if>
+					<a class="operate_col pinglun" href="{:U('feed/comment', array('feed_id'=>$feed_info['feed_id']))}">{$feed_info['comment_count']}</a>
+					<a class="operate_col zhuangfa" href="{:U('feed/repost', array('feed_id'=>$feed_info['feed_id']))}">{$feed_info['repost_count']}</a>
+					<a class="operate_col copy_link feedSheet" data-is-self="{$feed_info['is_self']}" data-feed-id="{$feed_info['feed_id']}"></a>
+					<p class="issue_time">{$feed_info['feed_ctime']}</p>
+				</div>	
+			</div>				
+		<else />
+			<div class="comment_top">
+				<a href="{:U('Member/info', array('member_id'=>$feed_info['member']['member_id']))}" style="display: inline-block;">
+					<img src="{$feed_info['member']['member_avatar']}" />
+					<span class="user_name">{$feed_info['member']['member_name']}</span>
+				</a>
+				<div class="concern">
+					<if condition="!$feed_info['is_self']">
+						<php>
+							if($feed_info['is_follow']){
+						</php>			
+								<a class="concern_col follow{$feed_info['member_id']}" data-role="unfollow" data-mid="{$feed_info['member_id']}" href="javascript:;">取消关注</a>
+						<php>	
+							}else{
+						</php>		
+								<a class="concern_col follow{$feed_info['member_id']}" data-role="follow" data-mid="{$feed_info['member_id']}" href="javascript:;">关注</a>
+						<php>	
+							}
+						</php>	
+					</if>
+				</div>					
+			</div>
+			<div class="comment_imgs">
+				<div class="imgs_list">
+					<a href="javascript:;" class="imgsView" data-pics="{$feed_info['pics_url']}">
+						<img class="" src="{$feed_info['cover_url']}"  />
+					</a>
+				</div>
+				<span class="album_number">{$feed_info['pics_count']}</span>
+			</div>
+			<div class="info_text">{$feed_info['feed_content']}</div>
+			<div class="operate">
+				<if condition="$feed_info['is_fav']">
+					<a class="operate_col zan_cur delFav" href="javascript:;" data-feed-id="{$feed_info['feed_id']}">{$feed_info['fav_count']}</a>
+				<else />	
+					<a class="operate_col zan addFav" href="javascript:;" data-feed-id="{$feed_info['feed_id']}">{$feed_info['fav_count']}</a>
+				</if>
+				<a class="operate_col pinglun" href="{:U('feed/comment', array('feed_id'=>$feed_info['feed_id']))}">{$feed_info['comment_count']}</a>
+				<!--<a class="operate_col zhuangfa" href="{:U('feed/repost', array('feed_id'=>$feed_info['feed_id']))}">{$feed_info['repost_count']}</a>-->
+				<a class="operate_col copy_link feedSheet" href="javascript:;" data-is-self="{$feed_info['is_self']}" data-feed-id="{$feed_info['feed_id']}"></a>
+				<p class="issue_time">{$feed_info['feed_ctime']}</p>
+			</div>
+		</if>
+	</div>		
+	<div class="comment_list" id="comment-list">
+		
+	</div>
+	<div id="loading" class="feed-loading" style="display: none;">
+		<span>加载中…</span>
+	</div>		
+</block>
+
+<block name="style">
+
+</block>
+
+<block name="script">
+	<script type="text/template" id="t-comment">
+		<%for(i in comment_list){%>
+			<div class="comment_row">
+				<div class="comment_top">
+					<a href="<%=comment_list[i].member['url_info']%>">
+						<img src="<%=comment_list[i].member['member_avatar']%>" />
+						<div class="user_info">
+							<span class="user_name"><%=comment_list[i].member['member_name']%></span>
+							<span class="issue_data"><%=comment_list[i].comment_ctime%></span>
+						</div>	
+					</a>
+					<%if(member_id != comment_list[i].member_id){%>
+						<a class="operate_col reply" href="<%=comment_list[i].reply_url%>">回复</a>
+					<%}%>
+					<!--<a class="operate_col zan"></a>-->
+				</div>
+				<%if(comment_list[i].reply_comment_id > 0){%>
+					<div class="comment_row_con">回复<span class="comment_reply_nickname"><%=comment_list[i].reply_member['member_name']%></span>:<%=comment_list[i].comment_content%></div>
+				<%}else{%>
+					<div class="comment_row_con"><%=comment_list[i].comment_content%></div>
+				<%}%>
+			</div>		
+		<%}%>
+	</script>
+	<script>
+		var feed_id     = {$feed_info.feed_id|default=0};
+		var commentPage = 1;
+		
+		var commentIsLoading = false;
+		var commentIsEnd     = false;
+		
+		function addComment(){
+			$('#loading').show();
+			commentIsLoading = true;
+			
+			$.ajax({
+				type:"post",
+				dataType:'json',
+				url:"{:U('Comment/page')}",
+				data:{
+					page:commentPage,
+					feed_id:feed_id,
+				},
+				success:function(data){
+					$('#loading').hide();
+					commentIsLoading = false;
+					commentPage ++;
+					
+					if(!data.comment_list.length){
+						commentIsEnd = true;
+						return;
+					}
+					
+					var html = template.render('t-comment', data);
+					$('#comment-list').append(html);				
+				},
+				error:function(){
+					commentIsLoading = false;
+					$('#loading').hide();
+					$.weui.alert('网络错误');
+				}
+			});
+		}
+		
+		addComment();
+		
+		infiniteScroll(function(){
+			if(commentIsEnd || commentIsLoading){
+				return;
+			}
+			
+			addComment();
+		});		
+			
+		$('body').on('click', '.addFav', function(){
+			var _this   = $(this);
+			var feed_id = $(this).data('feed-id');
+			
+			$.weui.loading();
+	
+			$.ajax({
+				type:"post",
+				dataType:"json",
+				url:"{:U('Fav/add')}",
+				data:{
+					feed_id:feed_id,
+				},
+				success:function(res){
+					$.weui.hideLoading();
+					
+					if(res.status){
+						$.weui.toast(res.info);
+						
+						_this.addClass('zan_cur delFav');
+						_this.removeClass('zan addFav');
+						_this.html(_this.html()*1+1);
+					}else{
+						$.weui.alert(res.info);
+					}
+				},
+				error:function(){
+					$.weui.hideLoading();
+					$.weui.alert('网络错误');
+				}
+			});
+		});
+		
+		$('body').on('click', '.delFav', function(){
+			var _this   = $(this);
+			var feed_id = $(this).data('feed-id');
+			
+			$.weui.confirm('确认取消收藏?', function(){
+				$.weui.loading();
+				
+				$.ajax({
+					type:"post",
+					dataType:"json",
+					url:"{:U('Fav/del')}",
+					data:{
+						feed_id:feed_id,
+					},
+					success:function(res){
+						$.weui.hideLoading();
+						
+						if(res.status){
+							$.weui.toast(res.info);
+							
+							_this.removeClass('zan_cur delFav');
+							_this.addClass('zan addFav');
+							_this.html(_this.html()*1-1);
+						}else{
+							$.weui.alert(res.info);
+						}
+					},
+					error:function(){
+						$.weui.hideLoading();
+						$.weui.alert('网络错误');
+					}
+				});					
+			});
+		});		
+		
+		//关注
+		$('body').on('click', '[data-role="follow"]', function(){
+			var _this = $(this);
+			var mid   = $(this).data('mid');
+			var el    = $('.follow'+mid);
+			
+			$.weui.loading();
+			
+			$.ajax({
+				type: "post",
+				dataType: "json",
+				url:"{:U('Follow/add')}",
+				data : {
+					follow_member_id : mid,
+				},
+				success: function(res){
+					$.weui.hideLoading();
+					
+					if(res.status){
+						$.weui.toast(res.info);
+						
+						el.html('取消关注');
+						el.attr('data-role', 'unfollow');
+					}else{
+						$.weui.alert(res.info);
+					}
+				},
+				error: function(){
+					$.weui.hideLoading();
+					$.weui.alert('网络错误');
+				}
+			});				
+		});
+			
+		// 取消关注
+		$('body').on('click', '[data-role="unfollow"]', function(){
+			var _this = $(this)
+			var mid   = $(this).data('mid');
+			var el    = $('.follow'+mid);
+			
+			$.weui.confirm('确认取消关注?', function(){
+				$.weui.loading();
+				
+				$.ajax({
+					type: "post",
+					dataType: "json",
+					url:"{:U('Follow/del')}",
+					data : {
+						follow_member_id : mid,
+					},
+					success: function(res){
+						$.weui.hideLoading();
+						
+						if(res.status){
+							$.weui.toast(res.info);
+							
+							el.html('关注');
+							el.attr('data-role', 'follow');
+						}else{
+							$.weui.alert(res.info);
+						}
+					},
+					error: function(){
+						$.weui.hideLoading();
+						$.weui.alert('网络错误');
+					}
+				});
+			});
+		});			
+	</script>
+</block>

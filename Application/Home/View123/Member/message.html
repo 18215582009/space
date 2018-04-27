@@ -1,0 +1,89 @@
+<extend name="_Layout/base_tabbar"/>
+
+<block name="content">
+	<div class="comment_list_mid" id="message-list">
+
+	</div>
+	<div id="loading" class="feed-loading" style="display: none;">
+		<span>加载中…</span>
+	</div>   	
+</block>
+
+<block name="script">
+	<script src="__JS__/notify.class.js"></script>
+	<script type="text/template" id="t-message">
+		<%for(i in message_list){%>
+			<div class="comment_list_item">
+				<a href="javascript:;" data-url="<%=message_list[i].content.web_url%>" onclick="Notify.readMessage(this,<%=message_list[i].message_id%>)" style="display: block;">
+					<!--<img src="img/album (1).jpg" />-->
+					<div class="comment_info" style="height: auto;">
+						<img src="<%=message_list[i].member.member_avatar%>" />
+						<div class="comment_info_right">
+							<p><%=message_list[i].member.member_name%></p>
+							<div class="comment_con_col"><%=message_list[i].content.title%></div>
+							<div class="comment_con_col"><%=message_list[i].content.content%></div>
+							<p class="comment_time"><%=message_list[i].ctime%></p>
+						</div>
+					</div>
+				</a>
+			</div>		
+		<%}%>
+	</script>
+	<script>
+		var member_id = {$member_id|default=0};
+		var page      = 1;
+		
+		var isLoading = false;
+		var isEnd     = false;
+		
+		function addMessage(){
+			$('#loading').show();
+			isLoading = true;
+			
+			$.ajax({
+				type: 'post',
+				dataType: 'json',
+				url: '{:U("message/page")}',
+				data: {
+					page: page,
+					member_id:member_id,
+				},
+				success: function(data){
+					$('#loading').hide();
+					isLoading = false;
+					page ++;
+					
+					if(data.message_list.length == 0){
+						isEnd = true;
+						return;
+					}
+					
+					var html = template.render('t-message', data);
+					$('#message-list').append(html);
+				},
+				error: function(){
+					$('#loading').hide();
+					isLoading = false;
+				}
+			});
+		};
+		
+		addMessage();
+		
+//		infiniteScroll(function(){
+//			if(isEnd || isLoading){
+//				return;
+//			}
+//			
+//			addFollow();
+//		});		
+			
+//		$(".weui_tab_bd").scroll(function(){
+//			var height  = $(".weui_tab_bd").scrollTop() + triggerDistance;
+//			var bHeight = $(".scroll").height() - $(".weui_tab_bd").height();
+//			if(height >= bHeight && !isLoading && !isEnd){
+//				addFollow();
+//			}
+//		});	
+	</script>
+</block>

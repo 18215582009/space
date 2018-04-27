@@ -1,0 +1,60 @@
+<extend name="_Layout/base_not_tabbar"/>
+
+<block name="content">
+	<div class="cell">
+		<div class="hd">
+			<h1 class="page_title">Login</h1>
+		</div>
+		<div class="bd">
+			<form action="__SELF__" method="post">
+				<div class="weui_cells weui_cells_form">
+					<div class="weui_cell">
+						<div class="weui_cell_hd">
+							<label class="weui_label">账号</label>
+						</div>
+						<div class="weui_cell_bd weui_cell_primary">
+							<input class="weui_input" type="text" name="username" placeholder="请输入账号">
+						</div>
+					</div>
+					<div class="weui_cell">
+						<div class="weui_cell_hd">
+							<label class="weui_label">密码</label>
+						</div>
+						<div class="weui_cell_bd weui_cell_primary">
+							<input class="weui_input" type="password" name="password" placeholder="请输入密码">
+						</div>
+					</div>				
+					<div class="weui_cell weui_vcode">
+						<div class="weui_cell_hd">
+							<label class="weui_label">验证码</label>
+						</div>
+						<div class="weui_cell_bd weui_cell_primary">
+							<input class="weui_input" type="number" name="verify" placeholder="请输入验证码">
+						</div>
+						<a href="javascript:;" class="weui_cell_ft reloadVerify">
+							<img src="{:U('Account/verify')}" class="verifyImg">
+						</a>
+					</div>
+				</div>
+				<div class="weui_btn_area">
+				    <button class="weui_btn weui_btn_primary" type="submit">确定</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</block>
+
+<block name="script">
+	<script>
+		$(function(){
+			$('body').on('click', '.reloadVerify', function(){
+	            var verifyimg = $(".verifyImg").attr("src");
+	            if (verifyimg.indexOf('?') > 0) {
+	                $(".verifyImg").attr("src", verifyimg + '&random=' + Math.random());
+	            } else {
+	                $(".verifyImg").attr("src", verifyimg.replace(/\?.*$/, '') + '?' + Math.random());
+	            }
+			});
+		});
+	</script>
+</block>

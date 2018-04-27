@@ -1,0 +1,70 @@
+<extend name="_Layout/base_not_tabbar"/>
+
+<block name="content">
+	<form action="__SELF__" method="post" id="form">
+		<div class="weui_cells weui_cells_form">
+			<div class="weui_cell">
+				<div class="weui_cell_bd weui_cell_primary">
+	                <textarea class="weui_textarea" rows="5" name="comment_content" required placeholder="写评论..." emptyTips="请输入评论"></textarea>
+	            </div>
+			</div>	
+			<input type="hidden" name="feed_id" value="{$feed_id}" />
+			<input type="hidden" name="reply_comment_id" value="{$reply_comment_id}" />
+	    </div>
+	    
+		<div class="weui_btn_area">
+	        <a class="weui_btn weui_btn_default" href="javascript:" id="submit">提交</a>
+	    </div>		
+	</form>
+</block>
+
+<block name="script">
+	<script src="__JS__/emoji.js"></script>
+	<script>
+		$('body').on('input', '[name=comment_content]', function(){
+			var value = $(this).val().trim();
+			
+			    value = jEmoji.softbankToUnified(value);
+			    value = jEmoji.googleToUnified(value);
+			    value = jEmoji.docomoToUnified(value);
+			    value = jEmoji.kddiToUnified(value);
+				
+			$(this).val(value);			
+		});
+	
+		var $form = $('#form');
+		$form.form();
+	
+		$('#submit').on('click', function(){
+			//
+			$form.validate(function(error){
+				if(!error){
+					$.weui.loading();
+					
+					$.ajax({
+						type:"post",
+						dataType:'json',
+						data : $form.serialize(),
+						url:'{:U("Feed/comment")}',
+						success: function(res){
+							$.weui.hideLoading();
+							
+							if(res.status){
+								$.weui.toast(res.info, function(){
+									history.back();
+	//								res.url && (location = res.url);
+								});
+							}else{
+								$.weui.alert(res.info);
+							}
+						},
+						error:function(){
+							$.weui.hideLoading();
+							$.weui.alert('网络错误');
+						}
+					});
+				}
+			});
+		});
+	</script>
+</block>

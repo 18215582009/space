@@ -1,0 +1,195 @@
+[ 2018-04-07T12:02:13+08:00 ] 127.0.0.1 /admin
+ERR: 无法加载控制器:Admin
+
+[ 2018-04-07T12:02:18+08:00 ] 127.0.0.1 /index.php/admin
+ERR: 无法加载控制器:Admin
+
+[ 2018-04-07T12:02:30+08:00 ] 127.0.0.1 /index.php/admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /Applications/XAMPP/xamppfiles/htdocs/space/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0035s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0004s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.011315s ]
+INFO: [ app_init ] --END-- [ RunTime:0.011585s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000450s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0004s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Common/function.php 第 7 行.
+ERR: 无法加载控制器:Admin
+
+[ 2018-04-07T12:04:01+08:00 ] 127.0.0.1 /admin/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000006s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /Applications/XAMPP/xamppfiles/htdocs/space/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0038s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0004s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.011931s ]
+INFO: [ app_init ] --END-- [ RunTime:0.012195s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000475s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0004s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Common/function.php 第 7 行.
+ERR: 无法加载控制器:Admin
+
+[ 2018-04-07T12:04:05+08:00 ] 127.0.0.1 /admin/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /Applications/XAMPP/xamppfiles/htdocs/space/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0035s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.009838s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010241s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000244s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0004s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Common/function.php 第 7 行.
+ERR: 无法加载控制器:Admin
+
+[ 2018-04-07T12:04:12+08:00 ] 127.0.0.1 /index.php/home/category/get_Shoplist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000005s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /Applications/XAMPP/xamppfiles/htdocs/space/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0038s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.009561s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009760s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000323s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Common/function.php 第 7 行.
+
+[ 2018-04-07T12:04:14+08:00 ] 127.0.0.1 /admin/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /Applications/XAMPP/xamppfiles/htdocs/space/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0027s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.010009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010329s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000714s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Common/function.php 第 7 行.
+ERR: 无法加载控制器:Admin
+
+[ 2018-04-07T12:04:16+08:00 ] 127.0.0.1 /admin/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000006s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /Applications/XAMPP/xamppfiles/htdocs/space/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0023s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.008507s ]
+INFO: [ app_init ] --END-- [ RunTime:0.008704s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000303s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0004s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Common/function.php 第 7 行.
+ERR: 无法加载控制器:Admin
+
+[ 2018-04-07T12:04:18+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /Applications/XAMPP/xamppfiles/htdocs/space/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0035s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.009685s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009905s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000249s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Common/function.php 第 7 行.
+
+[ 2018-04-07T12:04:21+08:00 ] 127.0.0.1 /admin/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /Applications/XAMPP/xamppfiles/htdocs/space/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0021s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.009436s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009675s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000278s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Common/function.php 第 7 行.
+ERR: 无法加载控制器:Admin
+
+[ 2018-04-07T13:11:06+08:00 ] 127.0.0.1 /Feed/feed_top
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /Applications/XAMPP/xamppfiles/htdocs/space/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0038s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.012737s ]
+INFO: [ app_init ] --END-- [ RunTime:0.013011s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000296s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0004s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Common/function.php 第 7 行.
+
+[ 2018-04-07T13:14:05+08:00 ] 127.0.0.1 /Feed/feed_top
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /Applications/XAMPP/xamppfiles/htdocs/space/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0037s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.009934s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010170s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000252s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0004s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Common/function.php 第 7 行.
+
+[ 2018-04-07T13:19:20+08:00 ] 127.0.0.1 /Feed/feed_top
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /Applications/XAMPP/xamppfiles/htdocs/space/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0039s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.024456s ]
+INFO: [ app_init ] --END-- [ RunTime:0.026368s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001505s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Common/function.php 第 7 行.
+
+[ 2018-04-07T13:20:04+08:00 ] 127.0.0.1 /Feed/feed_top
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /Applications/XAMPP/xamppfiles/htdocs/space/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0048s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0004s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.013220s ]
+INFO: [ app_init ] --END-- [ RunTime:0.013579s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000573s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Common/function.php 第 7 行.
+
+[ 2018-04-07T13:22:42+08:00 ] ::1 /space/feed/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /Applications/XAMPP/xamppfiles/htdocs/space/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0040s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.019076s ]
+INFO: [ app_init ] --END-- [ RunTime:0.019978s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000645s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0004s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Common/function.php 第 7 行.
+ERR: 非法操作:index
+
+[ 2018-04-07T13:22:44+08:00 ] ::1 /space/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /Applications/XAMPP/xamppfiles/htdocs/space/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0037s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.009500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009749s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000405s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0004s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /Applications/XAMPP/xamppfiles/htdocs/space/Application/Common/Common/function.php 第 7 行.
+

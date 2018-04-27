@@ -1,0 +1,194 @@
+    <extend name="_Layout/base"/>
+
+<block name="main">
+       <section class="content">
+            <div class="widget-box ">
+        <div class="widget-header">
+            <h4 class="lighter smaller">
+                <i class="icon-comment blue"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+
+                <a href="{:U('/Feed/del',array('id'=>$id))}" class="label label-danger ajax-get confirm">删除</a>
+
+
+            </font></font>
+            </h4>
+
+        </div>
+        <div class="widget-body">
+         <div class="widget-main no-padding">
+            
+            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: auto;"><div class="dialogs" style="overflow: hidden; width: auto; height: auto;">
+                <div class="itemdiv dialogdiv">
+                    <div class="user">
+                        <img alt="Alexa的头像" src="{$member.headimgurl}">
+                    </div>
+                    <div class="body">
+                        <div class="time">
+                            <i class="icon-time">【{$feed.feed_title}】</i> 
+                            <span class="green">
+                                <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{$feed.feed_ctime}</font></font>
+                            </span>
+                        </div>
+                        <div class="name">
+                            <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{$member.nickname}</font></font></a>
+                        </div>
+                        <div class="text">
+
+                            <font style="vertical-align: inherit;">
+                                    {$feed.feed_content}
+                            </font>
+                                <div id="page-content" class="clearfix" >
+                        <div class="row-fluid">
+                        <!-- PAGE CONTENT BEGINS HERE -->
+                        <div class="row-fluid">
+                            <ul class="ace-thumbnails">
+                                <volist name="imgs" id="image">
+                                    <li>
+                                        <a href="{$image.path}" title="照片标题" data-rel="colorbox" class="cboxElement">
+                                            <img alt="150×150" src="{$image.path}" style="height:80px;width:80px">
+                                        </a>
+                                        <div class="tools">
+                                            <a href="#"><i class="icon-link"></i></a>
+                                            <a href="#"><i class="icon-paper-clip"></i></a>
+                                            <a href="#"><i class="icon-pencil"></i></a>
+                                            <a href="#"><i class="icon-remove red"></i></a>
+                                        </div>
+                                    </li>
+                                </volist>
+                           </ul>
+                        </div>
+                        <!-- PAGE CONTENT ENDS HERE -->
+                      </div>
+                    </div>
+                        </div>
+                        <div style=" position: absolute;right: 100px;bottom:20px;">
+                            <a href="#" >
+                                <img  src="__IMG__/encourage.png"/>
+                                <i class="icon-only icon-share-alt" >{$fav_count}</i>
+                            </a>
+
+                            <a href="#" style="margin-left:10px">
+                                  <img  src="__IMG__/discuss.png"/>
+                                <i class="icon-only icon-share-alt">{$comment_count}</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <!--评论-->
+                <div class="span6">
+                    <h3 class="header smaller lighter blue">
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;"><a href="{:U('/Feed/get_Prev',array('id'=>$id))}">上一页</a></font>
+                        </font>
+                        <font style="vertical-align: inherit;float: right;">
+                            <font style="vertical-align: inherit;"><a href=" {:U('/Feed/get_Next',array('id'=>$id))}">下一页</a></font>
+                        </font>
+
+                    </h3>
+                    <div id="accordion2" class="accordion" style="margin-bottom: 20px;">
+
+
+                        <volist name="comment_list" id="comment" key="k" >
+                            <div class="accordion-group" style="margin-bottom: 2px; border: 1px solid #e5e5e5;">
+                                <div class="accordion-heading">
+                                    <a href="#collapse{$k}" data-parent="#accordion2" data-toggle="collapse" style="display: block; padding: 8px 15px;"class="accordion-toggle collapsed">
+                                        <font style="vertical-align: inherit;">
+                                            <if condition="$comment.nickname && !$comment.r_member_name ">
+                                                <font style="vertical-align: inherit;">
+                                                   <img src="{$comment.headimgurl}" style="width:36px;height:36px;"/>
+                                                </font>
+                                                <font style="vertical-align: inherit;">{$comment.nickname}</font>
+                                            </if>
+                                            <if condition="$comment.nickname && $comment.r_member_name ">
+                                                <font style="vertical-align: inherit;">
+                                                    <img src="{$comment.r_headimgurl}" style="width:36px;height:36px;"/>
+                                                </font>
+
+                                                <font style="vertical-align: inherit;">{$comment.r_member_name}</font>
+                                            </if>
+                                        </font>
+                                    </a>
+                                </div>
+                                <div class="accordion-body collapse" id="collapse{$k}" style="height: 0px;">
+                                    <div class="accordion-inner">
+                                        <if condition ="!$comment.r_member_id && !$comment.r_member_name">
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">{$comment.comment_content}</font>
+                                            </font>
+                                        </if>
+                                        <if  condition ="$comment.r_member_id && $comment.r_member_name">
+                                            <font style="vertical-align: inherit;">
+                                                <p style="vertical-align: inherit;">{$comment.r_member_name}回复{$comment.nickname}：</p>
+                                                <font style="vertical-align: inherit;">{$comment.r_comment_content}</font>
+                                            </font>
+
+                                        </if>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </volist>
+
+
+
+
+                        <!--<div class="accordion-group" style="margin-bottom: 2px; border: 1px solid #e5e5e5;">-->
+                            <!--<div class="accordion-heading">-->
+                                <!--<a href="#collapse2" data-parent="#accordion2" data-toggle="collapse" style="display: block; padding: 8px 15px;"class="accordion-toggle collapsed">-->
+                                    <!--<font style="vertical-align: inherit;">-->
+                                        <!--<font style="vertical-align: inherit;">可折叠组项目＃1</font>-->
+                                    <!--</font>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                            <!--<div class="accordion-body collapse" id="collapse2" style="height: 0px;">-->
+                                <!--<div class="accordion-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-->
+                                    <!--Anim pariatur cliche reprehenderit，enim eiusmod high life accusamus terry richardson ad squid。</font><font style="vertical-align: inherit;">3狼月亮，非cupidatat滑板dolor早午餐。</font><font style="vertical-align: inherit;">食物卡车奎奴亚藜nesciunt laborum eiusmod。</font><font style="vertical-align: inherit;">早午餐3狼月亮馅饼，sunt aliqua把它放在它上面的乌贼鱿鱼单原产咖啡nulla assumenda shoreditch et。</font><font style="vertical-align: inherit;">Nihil anim keffiyeh helvetica，手工啤酒工人韦斯安德森信任nesciunt sapiente ea proident。-->
+                                <!--</font></font></div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+
+                    </div>
+
+                </div>
+                <!--评论-->
+ 
+            <div class="slimScrollBar ui-draggable" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 36px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 227.336px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+            </div>
+         </div><!--/widget-main-->
+        </div><!--/widget-body-->
+
+
+
+
+        
+    </div>
+
+
+       </section>
+
+</block>
+
+
+
+<block name="style">
+
+    <link href="__CSS__/builder.css" rel="stylesheet">
+    <link href="__LIBS__/jquery_huploadify/Huploadify.css" rel="stylesheet" />
+    <link href="__LIBS__/bootstrap_daterangepicker/daterangepicker.css" rel="stylesheet" /> 
+        <link href="__CSS__/ace.min.css" rel="stylesheet">
+</block>
+
+
+
+<block name="script">
+
+    <script src="__JS__/builder.js"></script>
+    <script src="__LIBS__/jquery_huploadify/jquery.Huploadify.js"></script>
+    <script src="__LIBS__/jquery_dragsort/jquery.dragsort.min.js"></script> 
+    <script src="__LIBS__/font_awesome_picker/font-awesome.picker.js"></script>
+    <script src="__LIBS__/moment/min/moment-with-locales.min.js"></script>
+    <script src="__LIBS__/bootstrap_daterangepicker/daterangepicker.js"></script>   
+</block>

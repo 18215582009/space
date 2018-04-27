@@ -1,0 +1,47 @@
+<if condition="$up_page neq ''">
+	{$up_page}
+</if>
+
+<volist name="feed_list" id="feed_info">
+	<div class="comment_unit">
+		<div class="comment_top">
+			<a href="{$feed_info['member']['info_url']}" style="display: inline-block;">
+				<img src="{$feed_info['member']['member_avatar']}" />
+				<p class="user_name">{$feed_info['member']['member_name']}</p>
+				<p class="user_wechat">微信号:{$feed_info['member']['member_wechat_account']}</p>
+			</a>
+			<div class="concern">
+				<if condition="!$feed_info['is_self']">
+					<if condition="$feed_info['is_follow']">
+						<a class="concern_col follow{$feed_info['member_id']}" data-role="unfollow" data-mid="{$feed_info['member_id']}" href="javascript:;">取消关注</a>
+					<else />
+						<a class="concern_col follow{$feed_info['member_id']}" data-role="follow" data-mid="{$feed_info['member_id']}" href="javascript:;">关注</a>
+					</if>
+				</if>
+			</div>
+		</div>
+		<div class="comment_imgs">
+			<div class="imgs_list">
+				<a class="imgsView" href="javascript:;" data-pics="{$feed_info['pics_url']}">
+					<img class="" src="{$feed_info['cover_url']}" />
+				</a>
+			</div>
+			<span class="album_number">{$feed_info['pics_count']}</span>
+		</div>
+		<a class="info_text" href="{$feed_info['info_url']}">{$feed_info['feed_content']}</a>	
+		<div class="operate">
+			<if condition="$feed_info['is_fav']">
+				<a class="operate_col zan_cur delFav" href="javascript:;" data-feed-id="{$feed_info['feed_id']}">{$feed_info['fav_count']}</a>
+			<else />
+				<a class="operate_col zan addFav" href="javascript:;" data-feed-id="{$feed_info['feed_id']}">{$feed_info['fav_count']}</a>
+			</if>
+			<a class="operate_col pinglun"  href="{$feed_info['info_url']}">{$feed_info['comment_count']}</a>
+			<a class="operate_col copy_link feedSheet" href="javascript:;" data-is-self="{$feed_info['is_self']}" data-feed-id="{$feed_info['feed_id']}"></a>
+			<p class="issue_time">{$feed_info['feed_ctime']}</p>
+		</div>	
+	</div>	
+</volist>
+
+<if condition="$down_page neq ''">
+	{$down_page}
+</if>

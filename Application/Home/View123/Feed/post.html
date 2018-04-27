@@ -1,0 +1,182 @@
+<extend name="_Layout/base_not_tabbar"/>
+
+<block name="content">
+	<form action="" method="post">
+		<div class="weui_cells weui_cells_form">
+			<div class="weui_cell">
+				<div class="weui_cell_bd weui_cell_primary">
+	                <textarea class="weui_textarea" placeholder="请输入..." rows="5" id="content"></textarea>
+	                <div class="weui_textarea_counter"><span>0</span>/{:C('DOC_WORD_NUM')}</div>
+	            </div>
+			</div>	
+	        <div class="weui_cell">
+	            <div class="weui_cell_bd weui_cell_primary">
+					<div class="weui_uploader">
+						<div class="weui_uploader_hd weui_cell">
+	                        <div class="weui_cell_bd weui_cell_primary">图片上传</div>
+	                        <div class="weui_cell_ft"><span id="imgCount">0</span>/9</div>
+	                    </div>
+	                    <div class="weui_uploader_bd">
+	                        <ul class="weui_uploader_files"></ul>
+	                        <div class="weui_uploader_input_wrp">
+	                            <div class="weui_uploader_input"></div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    
+		<div class="weui_btn_area">
+	        <a class="weui_btn weui_btn_default" href="javascript:" id="submit">提交</a>
+	    </div>
+	</form>
+</block>
+
+<block name="script">
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js "></script>
+	<script src="__JS__/emoji.js"></script>
+	<script>wx.config({$jsConfig});</script>
+	<script>
+		var config = {};
+			config.doc_word_num = {:C('DOC_WORD_NUM')};
+			config.doc_img_num  = {:C('DOC_IMG_NUM')};
+	</script>
+	<script>
+		$('.weui_textarea').on('input', function(){
+			//emoji兼容
+			var value = $(this).val().trim();
+			
+			    value = jEmoji.softbankToUnified(value);
+			    value = jEmoji.googleToUnified(value);
+			    value = jEmoji.docomoToUnified(value);
+			    value = jEmoji.kddiToUnified(value);
+				
+			$(this).val(value);		
+			
+			// 超出自动删除
+			if(this.value.length > config.doc_word_num){
+				this.value = this.value.slice(0, config.doc_word_num);
+			}
+			
+			$('.weui_textarea_counter').find('span').html(this.value.length);
+		});
+	</script>
+	<script>
+		var $files = $('.weui_uploader_files');
+		var $input = $('.weui_uploader_input_wrp');
+		var $imgCount = $('#imgCount');
+		
+		var maxCount = config.doc_img_num;
+		var images   = [];
+	
+		$input.on('click', '.weui_uploader_input', function(){
+            wx.chooseImage({
+			    count: maxCount - images.length,
+			    sizeType: ['compressed'],
+			    success: function (res) {
+			    	// 未选择
+			        if(res.localIds.length == 0){
+			        	return;
+			        }
+			        
+			    	var localIds = res.localIds,
+			    		i = 0,
+			    		length = localIds.length;
+			        
+			        function upload() {
+			        	wx.uploadImage({
+			        		localId: localIds[i],
+			        		success: function (res) {
+			        			images.push({
+			        				localId:localIds[i],
+			        				serverId:res.serverId,
+			        			});
+			        			
+			        			$imgCount.html(images.length);
+			        			$files.append('<li class="weui_uploader_file" style="background-image:url('+localIds[i]+')"></li>');
+			        			
+			        			i ++;
+			        			
+			        			if(i < length){
+			        				upload();
+			        			}
+			        			
+						        if(images.length >= maxCount){
+						        	$input.hide();
+						        }
+			        		},
+			        		fail: function (res) {
+			        			$.weui.alert(JSON.stringify(res));
+			        		}
+			        	});
+			        }
+			        
+			        upload();
+			    },
+			    fail: function (res) {
+			    	$.weui.alert(JSON.stringify(res));
+			    }
+			});
+		});
+		
+		$files.on('click', '.weui_uploader_file', function(){
+			var index = $(this).index();
+			
+			$.weui.confirm('确认删除该图片?', function(){
+				var $preview = $files.find('.weui_uploader_file').eq(index);
+				
+            	$preview.remove();
+            	images.splice(index, 1);
+            	$imgCount.html(images.length);
+            	
+		        if(images.length < maxCount){
+		        	$input.show();
+		        }
+			}, function(){
+				console.log('取消删除');
+			});
+		});
+		
+		$('#submit').on('click', function(){
+			$.weui.loading();
+			
+			var content = $('#content').val();
+			
+			// 发表
+			$.ajax({
+				type: 'post',
+				dataType: 'json',
+				url: '__SELF__',
+				data: {
+					content: content,
+					images: images,
+				},
+				success: function(res){
+					$.weui.hideLoading();
+					
+					if(res.status){
+						var options = {
+							title : '提示',
+							content : res.info,
+							buttons : [{
+								label: '返回',
+                				type: 'primary',
+								onClick : function(){
+									history.back();
+								}
+							}]
+						}
+						$.weui.dialog(options);
+					}else{
+						$.weui.alert(res.info);
+					}
+				}, 
+				error: function(){
+					$.weui.hideLoading();
+					$.weui.alert('网络错误');
+				}
+			});
+		});
+	</script>
+</block>

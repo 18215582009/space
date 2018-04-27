@@ -1,0 +1,323 @@
+<extend name="_Layout/base_tabbar"/>
+
+<block name="content">
+    <div class="swiper-container swiper-h">
+        <div class="swiper-wrapper">
+        	<volist name="slider_list" id="slider">
+	            <div class="swiper-slide" style="background-image: url('{$slider['slider_cover']|get_cover}');">
+					<a href="{$slider['slider_url']|default = 'javascript:;'}"></a>	            	
+	            </div>
+        	</volist>	
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    
+    <div class="comment_mid" id="feed-list">
+    	
+    </div>
+	<div class="feed-loading" id="loading" style="display: none;">
+		<span>加载中…</span>
+	</div>    
+</block>
+
+<block name="style">
+	
+</block>
+
+<block name="script">
+	<script type="text/template" id="t-feed">
+		<%for(var i in feed_list){%>
+			<%if(feed_list[i]['repost_feed_id'] > 0){%>
+				<div class="comment_unit">
+					<div class="comment_top">
+						<a href="<%=feed_list[i].member['info_url']%>">
+							<img src="<%=feed_list[i].member['member_avatar']%>" />
+							<span class="user_name"><%=feed_list[i].member['member_name']%></span>
+						</a>
+						<div class="concern">
+							<span class="concern_col">关注</span>
+						</div>
+					</div>
+					<div class="default-content">
+						<a class="default-text" href="<%=feed_list[i].info_url%>"><%=feed_list[i].feed_content%></a>	
+					</div>
+					<div class="info_text extend-content">
+						<div>
+							<a style="color: #598abf;" href="<%=feed_list[i].retweeted.member.info_url%>">@<%=feed_list[i].retweeted.member.member_name%></a>
+							<span>:</span>
+							<a href="<%=feed_list[i].retweeted['info_url']%>"><%=feed_list[i].retweeted.feed_content%></a>
+						</div>
+						<div class="comment_imgs" style="margin-top: 7px;">
+							<div class="imgs_list">
+								<a class="imgsView" href="javascript:;" data-pics="<%=feed_list[i].retweeted.pics_url%>">
+									<img class="" src="<%=feed_list[i].retweeted.cover_url%>" />
+								</a>
+							</div>
+							<span class="album_number"><%=feed_list[i].retweeted.pics_count%></span>
+						</div>
+					</div>	
+					<div class="operate" style="border: 0;">
+						<%if(feed_list[i].is_fav){%>
+							<a class="operate_col zan_cur delFav" href="javascript:;" data-feed-id="<%=feed_list[i].feed_id%>"><%=feed_list[i].fav_count%></a>
+						<%}else{%>
+							<a class="operate_col zan addFav" href="javascript:;" data-feed-id="<%=feed_list[i].feed_id%>"><%=feed_list[i].fav_count%></a>
+						<%}%>
+						<a class="operate_col pinglun"  href="<%=feed_list[i].info_url%>"><%=feed_list[i].comment_count%></a>
+						<a class="operate_col zhuangfa" href="<%=feed_list[i].repost_url%>"><%=feed_list[i].repost_count%></a>
+						<a class="operate_col copy_link feedSheet" href="javascript:;" data-is-self="<%=feed_list[i].is_self%>" data-feed-id="<%=feed_list[i].feed_id%>"></a>
+						<p class="issue_time"><%=feed_list[i].feed_ctime%></p>
+					</div>	
+				</div>				
+			<%}else{%>
+				<div class="comment_unit">
+					<div class="comment_top">
+						<a href="<%=feed_list[i].member['info_url']%>">
+							<img src="<%=feed_list[i].member['member_avatar']%>" />
+							<span class="user_name"><%=feed_list[i].member['member_name']%></span>
+						</a>
+						<div class="concern">
+							<%if(!feed_list[i].is_self){%>
+								<%if(feed_list[i].is_follow){%>
+									<a class="concern_col follow<%=feed_list[i].member_id%>" data-role="unfollow" data-mid="<%=feed_list[i].member_id%>" href="javascript:;">取消关注</a>
+								<%}else{%>
+									<a class="concern_col follow<%=feed_list[i].member_id%>" data-role="follow" data-mid="<%=feed_list[i].member_id%>" href="javascript:;">关注</a>
+								<%}%>
+							<%}%>
+						</div>						
+					</div>
+					<div class="comment_imgs">
+						<div class="imgs_list">
+							<a class="imgsView" href="javascript:;" data-pics="<%=feed_list[i].pics_url%>">
+								<img class="" src="<%=feed_list[i].cover_url%>"  />
+							</a>
+						</div>
+						<span class="album_number"><%=feed_list[i].pics_count%></span>
+					</div>
+					<a class="info_text" href="<%=feed_list[i].info_url%>"><%=feed_list[i].feed_content%></a>
+					<div class="operate">
+						<%if(feed_list[i].is_fav){%>
+							<a class="operate_col zan_cur delFav" href="javascript:;" data-feed-id="<%=feed_list[i].feed_id%>"><%=feed_list[i].fav_count%></a>
+						<%}else{%>
+							<a class="operate_col zan addFav" href="javascript:;" data-feed-id="<%=feed_list[i].feed_id%>"><%=feed_list[i].fav_count%></a>
+						<%}%>
+						<a class="operate_col pinglun"  href="<%=feed_list[i].info_url%>"><%=feed_list[i].comment_count%></a>
+						<!--<a class="operate_col zhuangfa" href="<%=feed_list[i].repost_url%>"><%=feed_list[i].repost_count%></a>-->
+						<a class="operate_col copy_link feedSheet" href="javascript:;" data-is-self="<%=feed_list[i].is_self%>" data-feed-id="<%=feed_list[i].feed_id%>"></a>
+						<p class="issue_time"><%=feed_list[i].feed_ctime%></p>
+					</div>
+				</div>			
+			<%}%>
+	    <%}%>
+	</script>
+	<script>
+		$(function(){
+			new Swiper('.swiper-h');
+			
+//		    new Swiper('.swiper-h', {
+//		        pagination: '.swiper-pagination',
+//				paginationClickable: true,
+//				loop: true,
+//			});
+			
+//			var triggerDistance = 50;
+			
+			var feedIsLoading = false;
+			var feedIsEnd     = false;
+			var feedPage      = 1;
+			
+			function addFeed(){
+				$('#loading').show();
+				feedIsLoading = true;
+				
+				$.ajax({
+					type: 'post',
+					dataType: 'json',
+					url: '{:U("Feed/page")}',
+					data: {
+						page: feedPage,
+					},
+					success: function(data){
+						$('#loading').hide();
+						feedIsLoading = false;
+						feedPage ++;
+						
+						if(data.feed_list.length == 0){
+							feedIsEnd = true;
+							return;
+						}
+						
+						var html = template.render('t-feed', data);
+						$('#feed-list').append(html);
+					},
+					error: function(){
+						feedIsLoading = false;
+						$('#loading').hide();
+						$.weui.alert('网络错误');
+					}
+				});
+			};
+			
+			addFeed();
+			
+			infiniteScroll(function(){
+				if(feedIsEnd || feedIsLoading){
+					return;
+				}
+				
+				addFeed();
+			});
+				
+//			$(".weui_tab_bd").scroll(function(){
+//				var height  = $(".weui_tab_bd").scrollTop() + triggerDistance;
+//				var bHeight = $(".scroll").height() - $(".weui_tab_bd").height();
+//				if(height >= bHeight && !feedIsLoading && !feedIsEnd){
+//					addFeed();
+//				}
+//			});
+			
+			$('body').on('click', '.addFav', function(){
+				var _this   = $(this);
+				var feed_id = $(this).data('feed-id');
+				
+				$.weui.loading();
+		
+				$.ajax({
+					type:"post",
+					dataType:"json",
+					url:"/fav/add",
+					data:{
+						feed_id:feed_id,
+					},
+					success:function(res){
+						$.weui.hideLoading();
+						
+						if(res.status){
+							$.weui.toast(res.info);
+							
+							_this.addClass('zan_cur delFav');
+							_this.removeClass('zan addFav');
+							_this.html(_this.html()*1+1);
+						}else{
+							$.weui.alert(res.info);
+						}
+					},
+					error:function(){
+						$.weui.hideLoading();
+						$.weui.alert('网络错误');
+					}
+				});
+			});
+			
+			$('body').on('click', '.delFav', function(){
+				var _this   = $(this);
+				var feed_id = $(this).data('feed-id');
+				
+				$.weui.confirm('确认取消收藏?', function(){
+					
+					$.weui.loading();
+					
+					$.ajax({
+						type:"post",
+						dataType:"json",
+						url:"/fav/del",
+						data:{
+							feed_id:feed_id,
+						},
+						success:function(res){
+							$.weui.hideLoading();
+							
+							if(res.status){
+								$.weui.toast(res.info);
+								
+								_this.removeClass('zan_cur delFav');
+								_this.addClass('zan addFav');
+								_this.html(_this.html()*1-1);
+							}else{
+								$.weui.alert(res.info);
+							}
+						},
+						error:function(){
+							$.weui.hideLoading();
+							$.weui.alert('网络错误');
+						}
+					});					
+				});
+			});
+			
+			//关注
+			$('body').on('click', '[data-role="follow"]', function(){
+				var _this = $(this);
+				var mid   = $(this).data('mid');
+				var el    = $('.follow'+mid);
+				
+				$.weui.loading();
+				
+				$.ajax({
+					type: "post",
+					dataType: "json",
+					url:"{:U('Follow/add')}",
+					data : {
+						follow_member_id : mid,
+					},
+					success: function(res){
+						$.weui.hideLoading();
+						
+						if(res.status){
+							$.weui.toast(res.info);
+							
+							el.html('取消关注');
+							el.attr('data-role', 'unfollow');
+						}else{
+							$.weui.alert(res.info);
+						}
+					},
+					error: function(){
+						$.weui.hideLoading();
+						$.weui.alert('网络错误');
+					}
+				});				
+			});
+			
+			// 取消关注
+			$('body').on('click', '[data-role="unfollow"]', function(){
+				var _this = $(this)
+				var mid   = $(this).data('mid');
+				var el    = $('.follow'+mid);
+				
+				$.weui.confirm('确认取消关注?', function(){
+					$.weui.loading();
+					
+					$.ajax({
+						type: "post",
+						dataType: "json",
+						url:"{:U('Follow/del')}",
+						data : {
+							follow_member_id : mid,
+						},
+						success: function(res){
+							$.weui.hideLoading();
+							
+							if(res.status){
+								$.weui.toast(res.info);
+								
+								el.html('关注');
+								el.attr('data-role', 'follow');
+							}else{
+								$.weui.alert(res.info);
+							}
+						},
+						error: function(){
+							$.weui.hideLoading();
+							$.weui.alert('网络错误');
+						}
+					});
+				});
+			});				
+		});	
+	</script>
+</block>
+
+
+		
+		
+	

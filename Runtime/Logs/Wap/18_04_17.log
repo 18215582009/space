@@ -1,0 +1,223 @@
+[ 2018-04-17T10:21:56+08:00 ] 139.205.180.139 /Wap/Public/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /www/web/126wenren/public_html/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0013s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.003140s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003269s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000126s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /www/web/126wenren/public_html/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /www/web/126wenren/public_html/Application/Common/Common/function.php 第 7 行.
+ERR: 无法加载控制器:Public
+
+[ 2018-04-17T10:22:02+08:00 ] 139.205.180.139 /Wap/Index/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /www/web/126wenren/public_html/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0013s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.003228s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003364s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000076s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /www/web/126wenren/public_html/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /www/web/126wenren/public_html/Application/Common/Common/function.php 第 7 行.
+
+[ 2018-04-17T10:22:02+08:00 ] 139.205.180.139 /Wap/Account/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /www/web/126wenren/public_html/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0011s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.003041s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003167s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000075s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /www/web/126wenren/public_html/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /www/web/126wenren/public_html/Application/Common/Common/function.php 第 7 行.
+
+[ 2018-04-17T10:22:02+08:00 ] 139.205.180.139 /Wap/Account/verify.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /www/web/126wenren/public_html/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0013s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.003163s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003309s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000074s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /www/web/126wenren/public_html/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /www/web/126wenren/public_html/Application/Common/Common/function.php 第 7 行.
+
+[ 2018-04-17T10:24:30+08:00 ] 139.205.180.139 /Wap/Public/login/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /www/web/126wenren/public_html/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0014s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.003440s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003586s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000076s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /www/web/126wenren/public_html/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /www/web/126wenren/public_html/Application/Common/Common/function.php 第 7 行.
+ERR: 无法加载控制器:Public
+
+[ 2018-04-17T10:24:33+08:00 ] 139.205.180.139 /Wap
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /www/web/126wenren/public_html/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0013s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.003111s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003251s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000074s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /www/web/126wenren/public_html/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /www/web/126wenren/public_html/Application/Common/Common/function.php 第 7 行.
+
+[ 2018-04-17T10:24:33+08:00 ] 139.205.180.139 /Wap/Account/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /www/web/126wenren/public_html/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0013s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.003228s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003379s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000081s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /www/web/126wenren/public_html/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /www/web/126wenren/public_html/Application/Common/Common/function.php 第 7 行.
+
+[ 2018-04-17T10:24:33+08:00 ] 139.205.180.139 /Wap/Account/verify.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /www/web/126wenren/public_html/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0013s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.003088s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003223s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000072s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /www/web/126wenren/public_html/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /www/web/126wenren/public_html/Application/Common/Common/function.php 第 7 行.
+
+[ 2018-04-17T10:26:42+08:00 ] 139.205.180.139 /wap
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /www/web/126wenren/public_html/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0014s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.003413s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003552s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000095s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0003s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /www/web/126wenren/public_html/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /www/web/126wenren/public_html/Application/Common/Common/function.php 第 7 行.
+
+[ 2018-04-17T10:26:43+08:00 ] 139.205.180.139 /Wap/Account/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /www/web/126wenren/public_html/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0013s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.003220s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003376s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000092s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /www/web/126wenren/public_html/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /www/web/126wenren/public_html/Application/Common/Common/function.php 第 7 行.
+
+[ 2018-04-17T10:26:44+08:00 ] 139.205.180.139 /Wap/Account/verify.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /www/web/126wenren/public_html/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0013s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.003134s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003268s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000076s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /www/web/126wenren/public_html/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /www/web/126wenren/public_html/Application/Common/Common/function.php 第 7 行.
+
+[ 2018-04-17T10:26:58+08:00 ] 139.205.180.139 /Wap/Account/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /www/web/126wenren/public_html/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0015s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.003468s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003616s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000068s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /www/web/126wenren/public_html/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /www/web/126wenren/public_html/Application/Common/Common/function.php 第 7 行.
+
+[ 2018-04-17T10:27:00+08:00 ] 139.205.180.139 /Wap/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /www/web/126wenren/public_html/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0014s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.003316s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003450s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000072s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /www/web/126wenren/public_html/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /www/web/126wenren/public_html/Application/Common/Common/function.php 第 7 行.
+
+[ 2018-04-17T10:27:00+08:00 ] 139.205.180.139 /Wap/Index/pending.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /www/web/126wenren/public_html/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0013s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.003176s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003335s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000092s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /www/web/126wenren/public_html/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /www/web/126wenren/public_html/Application/Common/Common/function.php 第 7 行.
+
+[ 2018-04-17T10:27:02+08:00 ] 139.205.180.139 /Wap/Index/hasPass.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /www/web/126wenren/public_html/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0014s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.003265s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003398s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000079s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /www/web/126wenren/public_html/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /www/web/126wenren/public_html/Application/Common/Common/function.php 第 7 行.
+
+[ 2018-04-17T10:27:03+08:00 ] 139.205.180.139 /Wap/Index/noPass.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /www/web/126wenren/public_html/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0013s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.003252s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003423s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000079s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /www/web/126wenren/public_html/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /www/web/126wenren/public_html/Application/Common/Common/function.php 第 7 行.
+
+[ 2018-04-17T10:27:04+08:00 ] 139.205.180.139 /Wap/Index/delete.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+NOTIC: [8] Use of undefined constant STATUS_RESUME - assumed 'STATUS_RESUME' /www/web/126wenren/public_html/ThinkPHP/Common/functions.php 第 596 行.
+SQL: SHOW COLUMNS FROM `system_config` [ RunTime:0.0013s ]
+SQL: SELECT `value` FROM `system_config` WHERE `name` = 'URL_MODEL' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Common\Behavior\InitModuleBehavior [ RunTime:0.003085s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003213s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000072s ]
+SQL: SELECT `name`,`value`,`type` FROM `system_config` WHERE `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [2] Missing argument 2 for parse_attr(), called in /www/web/126wenren/public_html/Application/Common/Model/SystemConfigModel.class.php on line 42 and defined /www/web/126wenren/public_html/Application/Common/Common/function.php 第 7 行.
+

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<title>{$meta_title} | {:C('WEB_SITE_TITLE')}</title>
+		
+		<link href="__CSS__/weui.min.css" rel="stylesheet"/>
+		<link href="__CSS__/swiper.min.css" rel="stylesheet"/>
+		<link href="__CSS__/common.css?v={:time()}" rel="stylesheet"/>
+		<link href="__CSS__/style.css?v={:time()}" rel="stylesheet" />
+	</head>
+	<body class="wenren">
+		<php>
+			$unreadMessageCount=D('Message')->getHaventReadMessageCount(is_login());
+		</php>	
+		
+		<div class="content">
+		    <div class="swiper-container swiper-h">
+		        <div class="swiper-wrapper">
+		        	<volist name="slider_list" id="slider">
+			            <div class="swiper-slide" style="background-image: url('{$slider['slider_cover']|get_cover}');">
+							<a href="{$slider['slider_url']|default = 'javascript:;'}"></a>	            	
+			            </div>
+		        	</volist>	
+		        </div>
+		        <div class="swiper-pagination"></div>
+		    </div>		
+			<div class="comment_mid">{$feed_list}</div>
+		</div>
+		
+		<div class="weui_tabbar" style="position: fixed;">
+			<a href="{:U('Index/index')}" class="weui_tabbar_item">
+				<div class="weui_tabbar_icon">
+					<img src="__IMG__/home-left.png" />
+				</div>
+			</a>
+			<a href="{:U('Feed/post')}" class="weui_tabbar_item">
+				<div class="weui_tabbar_icon">
+					<img src="__IMG__/home-center.png" />
+				</div>
+			</a>
+			<a href="{:U('Member/info')}" class="weui_tabbar_item">
+				<div class="weui_tabbar_icon">
+					<img src="__IMG__/home-right.png" />
+					<span class="news_number" <if condition="$unreadMessageCount eq 0"> style="display: none"</if> >{$unreadMessageCount}</span>
+				</div>
+			</a>
+		</div>		
+
+		<script src="__JS__/jquery-2.1.4.min.js"></script>
+		<script src="__JS__/fastclick.min.js"></script>
+		<script src="__JS__/weui.min.js"></script>
+		<script src="__JS__/swiper.jquery.min.js"></script>
+		<script src="__JS__/pinchzoom.min.js"></script>
+		<script src="__JS__/common.js?v={:time()}"></script>
+		<script>
+			$(function(){
+				new Swiper('.swiper-h');
+				
+				$('body').on('click', 'page_prev', function(){
+					
+				});
+				
+				$('body').on('click', '.addFav', function(){
+					var _this   = $(this);
+					var feed_id = $(this).data('feed-id');
+					
+					$.weui.loading();
+			
+					$.ajax({
+						type:"post",
+						dataType:"json",
+						url:"/fav/add",
+						data:{
+							feed_id:feed_id,
+						},
+						success:function(res){
+							$.weui.hideLoading();
+							
+							if(res.status){
+								$.weui.toast(res.info);
+								
+								_this.addClass('zan_cur delFav');
+								_this.removeClass('zan addFav');
+								_this.html(_this.html()*1+1);
+							}else{
+								$.weui.alert(res.info);
+							}
+						},
+						error:function(){
+							$.weui.hideLoading();
+							$.weui.alert('网络错误');
+						}
+					});
+				});
+				
+				$('body').on('click', '.delFav', function(){
+					var _this   = $(this);
+					var feed_id = $(this).data('feed-id');
+					
+					$.weui.confirm('确认取消收藏?', function(){
+						
+						$.weui.loading();
+						
+						$.ajax({
+							type:"post",
+							dataType:"json",
+							url:"/fav/del",
+							data:{
+								feed_id:feed_id,
+							},
+							success:function(res){
+								$.weui.hideLoading();
+								
+								if(res.status){
+									$.weui.toast(res.info);
+									
+									_this.removeClass('zan_cur delFav');
+									_this.addClass('zan addFav');
+									_this.html(_this.html()*1-1);
+								}else{
+									$.weui.alert(res.info);
+								}
+							},
+							error:function(){
+								$.weui.hideLoading();
+								$.weui.alert('网络错误');
+							}
+						});					
+					});
+				});
+				
+				//关注
+				$('body').on('click', '[data-role="follow"]', function(){
+					var _this = $(this);
+					var mid   = $(this).data('mid');
+					var el    = $('.follow'+mid);
+					
+					$.weui.loading();
+					
+					$.ajax({
+						type: "post",
+						dataType: "json",
+						url:"{:U('Follow/add')}",
+						data : {
+							follow_member_id : mid,
+						},
+						success: function(res){
+							$.weui.hideLoading();
+							
+							if(res.status){
+								$.weui.toast(res.info);
+								
+								el.html('取消关注');
+								el.attr('data-role', 'unfollow');
+							}else{
+								$.weui.alert(res.info);
+							}
+						},
+						error: function(){
+							$.weui.hideLoading();
+							$.weui.alert('网络错误');
+						}
+					});				
+				});
+				
+				// 取消关注
+				$('body').on('click', '[data-role="unfollow"]', function(){
+					var _this = $(this)
+					var mid   = $(this).data('mid');
+					var el    = $('.follow'+mid);
+					
+					$.weui.confirm('确认取消关注?', function(){
+						$.weui.loading();
+						
+						$.ajax({
+							type: "post",
+							dataType: "json",
+							url:"{:U('Follow/del')}",
+							data : {
+								follow_member_id : mid,
+							},
+							success: function(res){
+								$.weui.hideLoading();
+								
+								if(res.status){
+									$.weui.toast(res.info);
+									
+									el.html('关注');
+									el.attr('data-role', 'follow');
+								}else{
+									$.weui.alert(res.info);
+								}
+							},
+							error: function(){
+								$.weui.hideLoading();
+								$.weui.alert('网络错误');
+							}
+						});
+					});
+				});				
+			});	
+		</script>		
+	</body>
+</html>

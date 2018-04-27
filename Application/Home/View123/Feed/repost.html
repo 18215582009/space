@@ -1,0 +1,69 @@
+<extend name="_Layout/base_not_tabbar"/>
+
+<block name="content">
+	<div class="weui_cells weui_cells_form">
+		<div class="weui_cell">
+			<div class="weui_cell_bd weui_cell_primary">
+                <textarea class="weui_textarea" placeholder="说说分享心得..." rows="5" id="feed-content" name="feed-content"><notempty name='repost_content'>{$repost_content}</notempty></textarea>
+            	<div class="weui_textarea_counter"><span>0</span>/{:C('DOC_WORD_NUM')}</div>
+			</div>
+		</div>	
+	</div>
+		
+	<div class="weui_btn_area">
+        <a class="weui_btn weui_btn_default" href="javascript:" id="submit">发送</a>
+    </div>
+</block>
+
+<block name="script">
+	<script>
+		var config = {};
+		config.doc_word_num = {:C('DOC_WORD_NUM')};
+		config.doc_img_num = {:C('DOC_IMG_NUM')};
+		
+		$('.weui_textarea').on('keyup', function(){
+			// 超出自动删除
+			if(this.value.length > config.doc_word_num){
+				this.value = this.value.slice(0, config.doc_word_num);
+			}
+			
+			$('.weui_textarea_counter').find('span').html(this.value.length);
+		});
+		$('.weui_textarea').focus();
+	</script>
+	<script>
+		var repost_feed_id = {$repost_feed_id|default = 0}
+		
+		$('#submit').on('click', function(){
+			$.weui.loading();
+			
+			var feed_content = $('#feed-content').val();
+			
+			// 发表
+			$.ajax({
+				type: 'post',
+				dataType: 'json',
+				url: '__SELF__',
+				data: {
+					feed_content: feed_content,
+					repost_feed_id: repost_feed_id,
+				},
+				success: function(res){
+					$.weui.hideLoading();
+					
+					if(res.status){
+						$.weui.toast(res.info, function(){
+							location = res.url;
+						});
+					}else{
+						$.weui.alert(res.info);
+					}
+				}, 
+				error: function(){
+					$.weui.hideLoading();
+					$.weui.alert('网络错误');
+				}
+			});
+		});
+	</script>
+</block>

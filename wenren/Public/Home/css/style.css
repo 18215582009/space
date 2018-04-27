@@ -1,0 +1,440 @@
+/**
+ * 个人中心主页
+ */
+.each_img{
+	height:38%;
+	width:100%;
+	background:url(../img/each_bg2.jpg) no-repeat;
+	background-size:cover;
+}
+.each_mid{
+	text-align:center;
+	margin-top:-40px;
+	line-height: 27px;
+}
+.my_photo{
+	background:#fbf9fe;
+	height:80px;
+	width:80px;
+	margin:auto;
+	padding:3px;
+	border-radius: 50%;
+}
+.my_photo img{
+	width:100%;
+	height:100%;
+	border-radius: 50%;
+}
+.each_name{
+	font-size:16px;
+}
+.each_id{
+	color:#727171;
+	font-size:12px;
+}
+.each_info{
+	text-align:center;
+	display: -webkit-box;
+	-webkit-box-pack: center;
+}
+.each_info a{
+	color:#000;
+	display: block;
+	-webkit-box-flex: 1;
+}
+.each_album{
+	overflow: hidden;
+	margin-top:5px;
+}
+.each_album_item{
+	width:33.33%;
+	text-align:center;
+	float:left;
+	margin:3px 0;
+	display:block;
+}
+.each_album_item img{
+	width: 100%;
+	height:103px;
+}
+.album_col{
+	overflow: hidden;
+	position: relative;
+	width: 95%;
+    margin: auto;
+}
+@media only screen and (min-width: 370px){
+	.each_album_item img{
+		height:121px;
+	}
+}
+@media only screen and (min-width: 410px){
+	.each_album_item img{
+		height:134px;
+	}	
+}
+.album_number{
+	position:absolute;
+	right:5px;
+	bottom:5px;
+	background:rgba(0,0,0,0.7);
+	color:#fff;
+	display:block;
+	height:17px;
+	line-height:18px;
+	width:17px;
+	border-radius: 50%;
+	font-size:12px;
+	text-align:center;
+}
+.follow_YesOrOn{
+	text-align:center;
+	margin:20px 0 30px 0;
+}
+.follow_YesOrOn_col{
+	display:inline-block;
+	height: 23px;
+    line-height: 25px;
+    padding: 0 10px;
+    border-radius: 13px;
+    border: solid 1px #727171;
+}
+/* comment.html 个人相册详情 */
+.comment_mid{
+	
+}
+.comment_top{
+	padding:10px 0;
+	overflow: hidden;
+	width:90%;
+	margin:auto;
+}
+.concern{
+	float:right;
+	margin-top: 15px;
+}
+.concern_col{
+	display:inline-block;
+	border:solid 1px #595757;
+	border-radius: 10px;
+	width:60px;
+	height:23px;
+	line-height:25px;
+	text-align:center;
+}
+.comment_top img{
+	width:45px;
+	height:45px;
+	border-radius: 50%;
+	float:left;
+	border: 1px solid #ddd;
+}
+.user_name{
+	display: block;
+    font-size: 16px;
+    height: 33px;
+    line-height: 33px;
+    margin-left:55px;
+    color:#595757;
+}
+.user_wechat{
+	display: block;
+    font-size: 12px;
+    height: 12px;
+    line-height: 12px;    
+    margin-left:55px;
+    color:#999;	
+}
+.comment_imgs{
+	position:relative;
+}
+.comment_imgs img{
+	width:100%;
+}
+.info_text{
+	display: block;
+	color:#727171;
+	padding:10px 5% 45px 5%;
+	line-height:22px;
+}
+.extend-content{
+	background:#f7f7f7;
+}
+.info_text a{
+	color:#727171;
+}
+
+/*.mack{
+	width:100%;
+	height:100%;
+	background:#000;
+	position: fixed;
+	left:0;
+	top:0;
+	z-index: 2;
+}
+.mack_close{
+	width:25px;
+	height:25px;
+	background:url(../img/icon_close.png) center center no-repeat;
+	background-size:100% 100%;
+	position:absolute;
+	right:10px;
+	top:10px;
+	z-index:2;
+}
+.glide_img_parent{
+	box-sizing: border-box;
+	padding:45px 0 15px 0;
+	height:100%;
+	position:relative;
+}
+.glide_img{
+	height:100%;
+	overflow: hidden;	
+}
+.glide_img_item{
+	float:left;
+	height:100%;
+	text-indent: -9999em;
+}*/
+
+.operate{
+	padding:15px 0 0 0;
+	width:90%;
+	margin:0 auto 0 auto;
+	border-top:solid 1px #f1f1f0;
+}
+.operate_col{
+	display:inline-block;
+	margin-right:15px;
+	padding-left:25px;
+	font-size:12px;
+	padding-top: 4px;
+	height:20px;
+	color:#929292;
+}
+.operate_col.zan{
+	background:url(../img/icon_zan.png) left top no-repeat;
+	background-size:22px auto;
+}
+.operate_col.pinglun{
+	background:url(../img/icon_pinglun.png) left top no-repeat;
+	background-size:22px auto;
+}
+.operate_col.zhuangfa{
+	background:url(../img/icon_zhuangfa.png) left top no-repeat;
+	background-size:22px auto;
+}
+.operate_col.copy_link{
+	float:right;
+	background:url(../img/icon_link.jpg) left center no-repeat;
+	background-size:22px auto;
+	margin-right:0;
+}
+.issue_time{
+	text-align:right;
+	line-height: 30px;
+}
+.operate_col.zan_cur{
+	background:url(../img/icon_zanCur.png) left top no-repeat;
+	background-size:22px auto;
+}
+.operate_col.zhuangfa_cur{
+	background:url(../img/icon_zhuangfaCur.png) left top no-repeat;
+	background-size:22px auto;
+}
+.comment_row{
+	border-bottom:solid 1px #f1f1f0;
+	width:90%;
+	margin:auto;
+	padding-top:12px;
+}
+.comment_row .comment_top{
+	width:100%;
+}
+.comment_row:last-child{
+	border-bottom:none;
+}
+.comment_row .comment_top{
+	padding:0 0;
+}
+.user_info{
+	margin-left:5px;
+	font-size:12px;
+	line-height:17px;
+	display: inline-block;
+}
+.user_info .user_name{
+	margin-left:0;
+	margin-top:13px;
+	color:#000;
+}
+.issue_data{
+	display: block;
+	color:#595757;
+}
+.comment_top .reply{
+	float: right;
+	margin-top: 14px;
+}
+.comment_row_con{
+	padding:5px 0 15px 50px;
+	color:#595757;
+	word-break:break-all;
+}
+.comment_list{
+	border-top:solid 1px #f1f1f0;
+	background-color: #fff;
+}
+.background_fff{
+	background:#fff;
+}
+.comment_reply{
+    margin-top: -7px;
+    padding-left: 50px;
+    padding-bottom:15px;
+    word-break:break-all;
+}
+.comment_reply_nickname{
+	color:#2853a3;
+}
+/* index.html */
+.comment_unit{
+	margin-bottom:10px;
+	background:#fff;
+}
+.comment_unit .operate{
+	border-bottom:none;
+}
+.comment_top_right,.comment_top_rightCur{
+	margin-right: 10px;
+    border: solid 1px #727171;
+    color: #727171;
+    float: right;
+    height:20px;
+    line-height: 23px;
+    margin-top: 20px;
+    padding: 0 10px;
+    border-radius: 13px;
+}
+.comment_top_rightCur{
+	margin-right: 7px;
+}
+.copy_link_style{
+	display:inline-block;
+	float: right;
+}
+.copy_link_text{
+	float: right;
+    background: #000;
+    color: #fff;
+    padding: 3px 5px;
+    border-radius: 5px;
+    margin-top: -25px;
+    margin-right: -37px;
+    font-size: 12px;
+}
+.trigon_000{
+	border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid #000;
+    float: right;
+    margin-right: -15px;
+}
+.default-text{
+	display: block;
+	padding:10px 5%;	
+}
+/* link.html  我喜欢的 */
+.link_mid{
+	margin-top:20px;
+}
+/* my_fans.html  我的粉丝 */
+.fans_unit{
+	border-bottom:solid 1px #f3f3f2;	
+	padding:15px 0px;
+}
+.fans_unit .comment_top_rightCur{
+	margin-right: 10px;
+}
+.hide{
+	display:none;
+}
+/* comment_list.html 评论列表 */
+.comment_list_mid{
+	padding:0 5%;
+	background:#fff;
+}
+.comment_list_item{
+	overflow: hidden;
+	padding: 10px 0;
+	border-bottom:solid 1px #f1f1f0;
+}
+.comment_list_item:last-child{
+	border:none;
+}
+.comment_list_item img{
+	width:70px;
+	height:70px;
+	float:right;
+}
+.comment_info{
+	height: 70px;
+    width: auto;
+    margin-right: 70px;
+}
+.comment_info img{
+	float:left;
+	border-radius: 50%;
+	width:45px;
+	height:45px;
+	border: 1px solid #ddd;
+}
+.comment_info_right{
+	margin-left: 55px;
+	line-height:23px;
+}
+.comment_time{
+	color:#929292;
+}
+.comment_name{
+	font-weight: 600;
+}
+.comment_con_col{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-weight: 600;
+}
+.popup_hint{
+	position:absolute;
+	width:260px;
+	height:110px;
+	top:45%;
+	left:50%;
+	margin-top:-55px;
+	margin-left:-130px;
+	text-align:center;
+	font-size:16px;
+}
+.popup_hint_text{
+	line-height:30px;
+	padding: 20px 0;
+}
+.popup_back{
+	display:block;
+	border-top:solid 1px #ddd;
+	height:40px;
+	line-height:40px;
+}
+.popup_back span{
+	background:url(../img/back6.png) left center no-repeat;
+	background-size:50px auto;
+	padding-left:40px;
+}
+
+
+
+
+

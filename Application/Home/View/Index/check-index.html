@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>126+商户核销</title>
+	<meta charset="utf-8" />
+	<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<!-- <link rel="stylesheet" type="text/css" href="css/base.css" /> -->
+</head>
+<!-- [if lt IE 9]>
+<script type="text/javascript" src="js/html5.js"></script>
+<script type="text/javascript" src="js/respond.min.js"></script>
+[endif] -->
+<style type="text/css">
+	* {
+		margin: 0px;
+		padding: 0px;
+		box-sizing: border-box;
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	body {
+		font-family: 微软雅黑;
+	}
+
+	.check {
+		width: 100%;
+		height: 100%;
+		background: url() no-repeat center center;
+	}
+
+	.check-t {
+		width: 100%;
+		text-align: center;
+		margin-top: 60px;
+		color: red;
+		font-size: 50px;
+		line-height: 1;
+	}
+
+	.check-t span {
+		position: relative;
+		display: inline-block;
+		font-size: 30px;
+		top: -25px;
+	}
+
+	.commanddiv {
+		width: 80%;
+		margin-left: 10%;
+		margin-top: 80px;
+	}
+
+	.command {
+		width: 100%;
+		text-align: center;
+		line-height: 40px;
+		font-size: 18px;
+		color: #666;
+	}
+
+	.command input {
+		width: 80%;
+		display: inline-block;
+		margin-left: 10px;
+		outline: none;
+		border: none;
+		background-color: #e7e7e7;
+		line-height: 30px;
+		padding-left: 10px;
+	}
+
+	.sub {
+		text-align: center;
+		margin-left: 15%;
+		width: 70%;
+		margin-top: 50px;
+		border: none;
+		outline: none;
+		background-color: #e68d61;
+		line-height: 40px;
+		color: #666;
+		font-size: 18px;
+		color: #fff;
+		border-radius: 3px;
+	}
+
+	.w-list,
+	.ed-list {
+		margin-top: 10px;
+		margin-left:5%;
+		width: 90%;
+		height: 90px;
+		padding: 10px 3%;
+		background-color: #fff;
+		border:1px solid #eee;
+		border-radius: 4px;
+	}
+
+	.check-list-t,
+	.w-list-t,
+	.ed-list-t {
+		width: 100%;
+		height: 70px;
+	}
+
+	.check-list-t-l,
+	.w-list-t-l,
+	.ed-list-t-l {
+		padding: 5px 0;
+		width: 70%;
+		float: left;
+		height: 70px;
+		border-right: 1px dashed #ddd;
+	}
+
+	.check-list-t-l span,
+	.w-list-t-l span,
+	.ed-list-t-l span {
+		font-size: 18px;
+		line-height: 1;
+		display: block;
+	}
+
+	.check-list-t-r,
+	.w-list-t-r,
+	.ed-list-t-r {
+		margin: 5px 0;
+		width: 30%;
+		float: left;
+		border: none;
+		text-align: center;
+		height: 60px;
+	}
+
+	.check-list-t-r li,
+	.w-list-t-r li,
+	.ed-list-t-r li {
+		font-size: 14px;
+		line-height: 1;
+		color: #666;
+		width: 100%;
+		list-style: none;
+	}
+	._tiping_alert {
+    opacity: 0.8;
+    position: fixed;
+    color: #fff;  
+    border-radius: 2px;
+    text-align: center;
+    font-size: 13px;
+    z-index: 999;
+    top: 40%;
+    padding: 0 10px;
+    min-width: 120px;
+    background: rgba(0, 0, 0, 0.8) no-repeat;
+    background-position: center 15px;
+    background-size: 50px 50px
+}
+</style>
+
+<body>
+	<div class="check">
+		<div class="check-t">
+			126
+			<span>+</span>
+		</div>
+	</div>
+	<div class="commanddiv">
+		<div class="command">
+			口令
+			<input id="key" type="" name="">
+		</div>
+	</div>
+	<div class="sub" onclick="toWxCode()">
+		核算优惠
+	</div>
+	
+</body>
+<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript">
+	var params = {		
+		shop_token:''
+	}
+	function toWxCode() {	
+		var key=$('#key').val()
+		if(key){
+			getInfo('post', wrUrl + '/LetterPool/ShopDesLotteryInfo', { shop_token:key }, getData);
+		
+		}else{
+			tip.alert('请输入口令')
+		}
+	}
+	
+	function getData(r){
+			if(r.status==200){
+				 window.location.href='http://126wenren.ejar.com.cn/Index/check-list.html?shop_id='+r.data
+			}else{
+				tip.alert(r.data)
+			}		
+	}
+	
+</script>
+
+</html>

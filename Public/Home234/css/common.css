@@ -1,0 +1,225 @@
+html,
+body {
+	height: 100%;
+	-webkit-tap-highlight-color: transparent
+}
+
+body {
+	min-width: 320px;
+	max-width: 640px;
+	margin: auto;
+	overflow-x: hidden;
+	color: #595757;
+	font-size: 14px;
+	background-color: #f2f2f2;
+}
+
+img {
+	vertical-align: top;
+}
+
+a {
+	color: #595757;
+}
+
+.page_btn {
+    display: block;
+    height: 40px;
+    background: #f0f2f5 -webkit-gradient(linear,0 0,0 100%,from(#f5f7fa),to(#f0f2f5));
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+    border-radius: 5px;
+    border: 1px solid #e1e3e5;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    color: #323233;
+    margin: 10px 35px;
+}
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+.scroll {
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+.container {
+	height: 100%;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch
+}
+
+.wenren .content {
+	padding-bottom: 55px 
+}
+
+.wenren .weui_tabbar_item {
+	padding: 10px 0 10px;
+}
+
+.wenren .weui_tabbar:before {
+	border: 0;
+}
+
+.swiper-h {
+	margin-bottom: 5px;
+}
+
+.swiper-h .swiper-slide {
+	height: 200px;
+	background-size: cover;
+	background-position: center center;
+}
+
+.swiper-h .swiper-slide>a {
+	display: block;
+	line-height: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.swiper-h .swiper-pagination-bullet-active {
+	background-color: #fff;
+}
+
+.swiper-b {
+	width: 100%;
+	height: 100%;
+}
+
+.swiper-b .swiper-slide {
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 100%;
+}
+
+.swiper-b .swiper-pagination-bullet-active {
+	background: #fff;
+}
+
+.swiper-b .swiper-pagination-bullet {
+	background: #ccc;
+}
+
+.mack {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+	background: #000;
+}
+
+.mack_close {
+	display: block;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	width: 25px;
+	height: 25px;
+	z-index: 3;
+	background: url(../img/icon_close.png) center center no-repeat;
+	background-size: 100% 100%;
+}
+
+.feed-loading {
+	display: block;
+	min-height: 50px;
+	text-align: center;
+}
+
+.feed-loading span {
+	display: inline-block;
+	margin: 14px 0;
+	padding: 0 0 0 25px;
+	font-size: 13px;
+	line-height: 19px;
+	color: #7c7c7c;
+	background: url(../img/main_loading.gif) no-repeat 0 0;
+	-webkit-background-size: 19px auto;
+	background-size: 19px auto;
+}
+
+.image-view {
+	position: fixed;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 1);
+}
+
+.image-view .swiper-container {
+	width: 100%;
+	height: 100%;
+}
+
+.image-view .swiper-pagination-bullet {
+	background-color: #ccc;
+}
+
+.image-view .swiper-pagination-bullet-active {
+	background: #fff;
+}
+
+.image-view .pinch-zoom-container {
+	width: 100%;
+	height: 100%;
+}
+
+.image-view .pinch-zoom,
+.image-view .pinch-zoom img {
+	-webkit-user-drag: none;
+}
+
+.image-view .pinch-zoom {
+	width: 100%;
+	height: 100%;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.image-view .pinch-zoom img {
+	max-width: 100%;
+	-webkit-transition: opacity .3s ease-out;
+}
+
+.weui_tabbar_icon {
+    position: relative;
+}
+
+.news_number{
+	display: inline-block;
+    position: absolute;
+    background: #71211a;
+    border-radius: 50%;
+    height: 13px;
+    width: 13px;
+    top: -5px;
+    color: #fff;
+    text-align: center;
+    line-height: 13px;
+    right: -2px;
+    font-size: 12px;
+}

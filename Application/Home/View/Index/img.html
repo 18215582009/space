@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>新增督查暗访</title>
+		<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+		<link rel="stylesheet" href="css/public.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/date.css" />
+		<style>
+			#typenum {
+				border: none;
+				list-style: none;
+				width: 100%;
+				text-align: left;
+			    padding-left: 20px;
+			    background: #FAF7F2;
+			}
+			
+			.jiazai {
+				position: absolute;
+			    left: 34%;
+			    top: 47px;
+			    width: 64%;
+			    text-align: center;
+			    z-index: 999;
+			}
+			.su-icon{
+				width:50%;
+				float:left;
+			}
+			.su-add{
+				width:80%;				
+				text-align:center;
+				height: 40px;
+				line-height: 40px;
+				background-image: linear-gradient(0deg, #0a6bcc 50%, #0b78e6 100%), linear-gradient( #ffffff, #ffffff);
+				background-blend-mode: normal, normal;
+				box-shadow: 0px 2px 20px 0px rgba(30, 30, 30, 0.2);
+				border-radius: 4px;
+				border: none;
+				font-size: 16px;
+				color: #fff;
+			}
+			.su-add1{
+				width:80%;				
+				text-align:center;
+				height: 40px;
+				line-height: 40px;
+				background-image: linear-gradient(0deg, #0a6bcc 50%, #0b78e6 100%), linear-gradient( #ffffff, #ffffff);
+				background-blend-mode: normal, normal;
+				box-shadow: 0px 2px 20px 0px rgba(30, 30, 30, 0.2);
+				border-radius: 4px;
+				border: none;
+				font-size: 16px;
+				color: #fff;				
+				
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id='warp'>
+			<div id='cont'>
+				<form id='regform'>
+					<ul class='unit-list'>
+						<p class='clearfix'>
+							<span class='unit-sp'>督查时间</span>							
+							<input type="text" placeholder="请选择" value='' / name='superviseTime' id='superviseTime' required>
+						</p>
+						<p class='clearfix'>
+							<span class='unit-sp'>督查地点</span>
+							<input type="text" placeholder="请填写" value='' /name='superviseSite' id='superviseSite'>
+						</p>
+						<p style='position:relative'>
+							<span class='unit-sp'>被督查单位</span>
+							<input type="text" placeholder="请填写" value='' / id='unitId'>
+							<span class='jiazai' style='display: none;'></span>
+						</p>
+						<p class='clearfix'>
+							<span class='unit-sp'>督查人姓名</span>
+							<input type="text" placeholder="请填写" value='' /name='supervisePerson' id='supervisePerson'>
+						</p>
+						<p class='clearfix'>
+							<span class='unit-sp'>联系方式</span>
+							<input type="text" placeholder="请填写" value='' /name='supervisePersonPhone' id='supervisePersonPhone'>
+						</p>
+						<div class='unit-du'>督查内容</div>
+						<textarea class='unit-text' name="superviseContent" rows="" cols="" placeholder="请填写" id='superviseContent'></textarea>
+						
+						<div class='unit-sc'>上传照片</div>
+						<div id='unit-img'>
+						
+							<div class="add-img">
+								<img src="img/upload.png" alt="">
+								<input class='dc-input' type='file' accept="image/*" value='' onchange="uploadImg(this)">
+						
+							</div>
+						
+						</div>
+					</ul>
+					<div class='su-icon'>
+						<input type="button" value='保存' class='su-add1' />
+					</div>
+					<div class='su-icon'>
+						<input type="button" value='提交' class='su-add' />
+					</div>
+				</form>
+				<div style="clear: both;"></div>
+			</div>
+			<div id="datePlugin"></div>
+			
+		</div>
+	</body>
+	<script src='js/jquery-1.12.4.min.js'></script>
+	<script type="text/javascript" src="js/login.js"></script>
+	
+	
+	
+	<script>
+		
+		function delimg(obj) {
+			if(confirm("确认删除吗")) {
+				$(obj).parents('.dc-add-img').remove();
+				temp = document.getElementById('unit-img');
+				lis = temp.getElementsByTagName('img');
+				var last_img = $(".add-img").last().find('img').attr('src'); //上传最后一张图片的值
+				if(lis.length == 6 && last_img != 'image/add.png') {
+					$(".add-img").css("display", "none");
+				} else {
+					$(".add-img").css("display", "inline-block");
+				}
+
+			} else {
+				return;
+			}
+
+		}
+		function chaxun(name) {
+			$.ajax({
+				type: "post",
+				url: ajaxurl + "/admin/list ",
+				async: true,
+				dataType: 'json',
+				data: {
+					name: name,
+					type: 1
+				},
+				success: function(r) {
+					if(r.code == '100') {
+						var html = template('test', r);
+						$('.jiazai').show();
+						$('.jiazai').html(html);
+						if(r.total == 0){
+							$('.jiazai,#typenum').hide();
+						}else{
+							$('#typenum li').click(function(){
+								var checked_option= $(this).addClass('checked_option').text();
+								var unitId = $(this).attr('id');
+								$('#unitId').attr('data-id',unitId);
+								$('#unitId').val(checked_option);
+								$('.jiazai,#typenum').hide();
+							})
+						}
+						
+					} else if(r.code == '500') {
+						tip.flag('' + r.msg + '', 'error');
+						
+					} else {
+						tip.flag('未知错误', 'error');
+					}
+				}
+			});
+		}
+		//保存,提交
+		function judge(state,id,msg){
+			var unitId = $('#unitId').attr('data-id');//单位id
+			var groupId = localStorage.getItem('id');
+			var groupName = localStorage.getItem('adminName');
+
+			if(confirm(msg)) {
+				$('#regform').ajaxSubmit({
+					url: ajaxurl + "/supervise/addSupervise ", //请求的url地址
+					type: "POST", //请求方式
+					dataType: "json", //返回格式为json
+					processData: false,
+					data: {
+						id:id,
+						state:state,
+						unitId: unitId,
+						groupId:groupId,
+						groupName:groupName
+					}, //参数值
+					beforeSend: function(r) {
+						//请求前的处理
+					},
+					success: function(r) {
+						//请求成功时处理
+						if(r.code == '100') {
+							setTimeout(function(){
+								tip.flag(''+r.msg+'', 'success');
+							},1500)								
+							window.history.go(-1);
+						} else if(r.code == '500') {
+							tip.flag('' + r.msg + '', 'error');
+						}
+					},
+					complete: function(r) {
+						//请求完成的处理
+					},
+					error: function(r) {
+						//请求出错处理
+					}
+				});
+			} else {
+				return;
+			}
+		}
+		$(function() {
+			var pageNo = 0;
+			var pageSize = 10;
+			var groupId = localStorage.getItem('id');
+			var he1 = parseFloat($(document).height()) + parseFloat($(document).scrollTop());
+			$('#cont').height(he1);
+			
+			//读取保存的数据
+			$.ajax({
+					type:"post",
+					url:ajaxurl+"/supervise/addJudgeSupervise",
+					async:true,
+					data:{groupId:groupId},
+					success:function(r){
+
+						if(r.code == '100'){
+	                        if(r.data.state == '0'){//未提交时读取
+	                        	r.data.time = r.data.superviseTime.substring(0,10);
+	                        	if(r.data.superviseImg != null){
+	                        		r.data.superviseImgs = r.data.superviseImg.split(',');
+	                        	}
+	                        	
+		                        var html = template('test1',r);
+		                        $('#warp').html(html);
+		                        //选择时间
+		                        $('#superviseTime').date({
+										theme: "datetime"
+								});
+								//监听输入框
+								$("#unitId").on("input propertychange", function() {
+									var name = $(this).val();
+									chaxun(name);
+								})
+								//表单验证/提交
+								$('.su-add').click(function() {
+									var id = $(this).attr('id');
+									judge(1,id,'确定提交？');
+								})
+								//保存
+								$('.su-add1').click(function() {
+									var id = $(this).attr('id');
+									judge(0,id,'确定保存？');
+								})
+	                        }else{
+	                        	 
+	                        }			
+						}else if(r.code == '500'){
+							tip.flag(''+r.msg+'','error');
+						}else{
+							tip.flag('未知错误','error');
+						}
+					},
+					error:function(r){
+						
+					}
+				});
+					
+			//上传图片
+			$(".dc-input").change(function() {
+				//上传图片数量限制
+				lis = $('#unit-img img');
+				temp = document.getElementById('unit-img');
+				lis = temp.getElementsByTagName('img');
+				if(lis.length == 6) {
+					$(".add-img").css("display", "none");
+				} else {
+					$(".add-img").css("display", "");
+				}
+				//函数完成后清除input的val 避免无法重复上传同一个图片
+				$(this).val("");
+			})
+			
+			//未读取到数据时默认
+			//选择时间
+            $('#superviseTime').date({
+					theme: "datetime"
+			});
+			//监听输入框
+			$("#unitId").on("input propertychange", function() {
+				var name = $(this).val();
+				chaxun(name);
+			})
+			//表单验证/提交
+			$('.su-add').click(function() {
+				var id = $(this).attr('id');
+				judge(1,id,'确定提交？');
+			})
+			//保存
+			$('.su-add1').click(function() {
+				var id = $(this).attr('id');
+				judge(0,id,'确定保存？');
+			})	
+			
+		})
+	</script>
+
+</html>

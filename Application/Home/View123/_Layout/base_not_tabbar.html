@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<title>{$meta_title} | {:C('WEB_SITE_TITLE')}</title>
+		<link href="__CSS__/weui.min.css" rel="stylesheet" />
+		<link href="__CSS__/common.css" rel="stylesheet" />
+		<block name="style"></block>
+	</head>
+	<body>
+		<div class="container">
+			<block name="content"></block>
+		</div>		
+
+		<script src="__JS__/jquery-2.1.4.min.js"></script>
+		<script src="__JS__/fastclick.min.js"></script>
+		<script src="__JS__/weui.min.js"></script>
+		<block name="script"></block>
+	</body>
+</html>

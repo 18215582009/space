@@ -1,0 +1,84 @@
+<extend name="_Layout/base_tabbar"/>
+
+<block name="content">
+	<div class="each_album link_mid" id="each-album">
+
+	</div>
+	<div id="loading" class="feed-loading" style="display: none;">
+		<span>加载中…</span>
+	</div>   	
+</block>
+
+<block name="script">
+	<script type="text/template" id="t-album">
+		<%for(var i in feed_list){%>
+			<a class="each_album_item" href="<%=feed_list[i].info_url%>">
+				<div class="album_col">
+					<img src="<%=feed_list[i].cover_url%>" />
+					<span class="album_number"><%=feed_list[i].pics_count%></span>
+				</div>
+			</a>
+		<%}%>
+	</script>
+	<script>
+		var feed_ids = {$feed_ids};
+		var feed_defalut = "__IMG__/feed-defalut.jpg";
+		
+//		var triggerDistance = 50;
+		
+		var page      = 1;
+		var isLoading = false;
+		var isEnd     = false;
+		
+		var addAlbum = function(){
+			$('#loading').show();
+			isLoading = true;
+			
+			$.ajax({
+				type:"post",
+				dataType:'json',
+				url:"{:U('Feed/page')}",
+				data:{
+					page:page,
+					fav:1,
+					feed_ids:feed_ids,
+				},
+				success:function(data){
+					$('#loading').hide();
+					isLoading = false;
+					page ++;
+					
+					if(data.feed_list.length == 0){
+						isEnd = true;
+						return;
+					}
+					
+					var html = template.render('t-album', data);
+					$('#each-album').append(html);
+				},
+				error:function(){
+					$('#loading').hide();
+					isLoading = false;
+				}
+			});
+		}
+		
+		addAlbum();
+		
+		infiniteScroll(function(){
+			if(isEnd || isLoading){
+				return;
+			}
+			
+			addAlbum();
+		});			
+		
+//		$(".weui_tab_bd").scroll(function(){
+//			var height  = $(".weui_tab_bd").scrollTop() + triggerDistance;
+//			var bHeight = $(".scroll").height() - $(".weui_tab_bd").height();
+//			if(height >= bHeight && !isLoading && !isEnd){
+//				addAlbum();
+//			}
+//		});
+	</script>	
+</block>	

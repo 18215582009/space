@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<title>{$meta_title} | {:C('WEB_SITE_TITLE')}</title>
+		<link href="__CSS__/weui.min.css" rel="stylesheet" />
+		<link href="__CSS__/swiper.min.css" rel="stylesheet" />
+		<link href="__CSS__/common.css?v={:time()}" rel="stylesheet" />
+		<link href="__CSS__/style.css?v={:time()}" rel="stylesheet" />
+		<block name="style"></block>
+	</head>
+	<php>
+		$unreadMessageCount=D('Message')->getHaventReadMessageCount(is_login());
+	</php>
+	
+	<body class="wenren">
+		<div class="weui_tab">
+			<!-- main -->
+			<div class="weui_tab_bd scroll">
+				<block name="content"></block>
+			</div>
+			<!-- /main -->
+			<!-- nav -->
+			<div class="weui_tabbar">
+				<a href="{:U('Index/index')}" class="weui_tabbar_item">
+					<div class="weui_tabbar_icon">
+						<img src="__IMG__/home-left.png" />
+					</div>
+				</a>
+				<a href="{:U('Feed/post')}" class="weui_tabbar_item">
+					<div class="weui_tabbar_icon">
+						<img src="__IMG__/home-center.png" />
+					</div>
+				</a>
+				<a href="{:U('Member/info')}" class="weui_tabbar_item">
+					<div class="weui_tabbar_icon">
+						<img src="__IMG__/home-right.png" />
+						<span class="news_number" <if condition="$unreadMessageCount eq 0"> style="display: none"</if> >{$unreadMessageCount}</span>
+					</div>
+				</a>
+			</div>
+			<!-- /nav -->
+		</div>
+		
+		<script src="__JS__/jquery-2.1.4.min.js"></script>
+		<script src="__JS__/fastclick.min.js"></script>
+		<script src="__JS__/weui.min.js"></script>
+		<script src="__JS__/swiper.jquery.min.js"></script>
+		<script src="__JS__/pinchzoom.min.js"></script>
+		<script src="__JS__/template.js"></script>
+		<script src="__JS__/common.js?v={:time()}"></script>
+		<block name="script"></block>
+	</body>
+</html>

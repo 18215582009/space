@@ -1,0 +1,1 @@
+a:6:{i:0;s:7:"data_id";i:1;s:7:"feed_id";i:2;s:8:"cover_id";i:3;s:8:"is_cover";s:3:"_pk";s:7:"data_id";s:5:"_type";a:4:{s:7:"data_id";s:16:"int(10) unsigned";s:7:"feed_id";s:16:"int(10) unsigned";s:8:"cover_id";s:16:"int(10) unsigned";s:8:"is_cover";s:19:"tinyint(3) unsigned";}}

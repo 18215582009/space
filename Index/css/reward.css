@@ -1,0 +1,114 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    font-family: 微软雅黑;
+}
+.error_title{
+    color:#f6b493;
+    padding:50px 0 20px 0;
+}
+.center{
+    text-align:center;
+}
+.error_bottom_txt{
+    color:#666;
+    padding-top:20px;
+}
+.reward_step_bg{
+    position: relative;
+}
+.reward_step_bg img{
+    width:100%;
+}
+.reward_start_box{
+    background: url('../img/reward_yellow_bg.png') no-repeat center center;
+	background-size: 100% 100%; 
+    position: absolute;
+    bottom:20px;
+    width:80%;
+    margin:0 0 0 10%;
+    text-align:center;
+}
+.reward_step_hand{
+    color:#e68d61;
+    font-weight: bold;
+    padding:18px;
+    font-size: 19px;
+    letter-spacing:4px;
+}
+.reward_step_btn{
+    background: #e68d61;
+    width:130px;
+    border-radius: 15px;
+    padding:2px 0;
+    margin:0 auto;
+    margin-bottom: 18px;
+    color:#fff;
+}
+.reward_size{
+    font-size: 14px;
+}
+.reward_explain{
+    width:100%;
+    text-align:center;
+    color:#7d25cf;
+    padding:15px;
+}
+.reward_explain img{
+    width:20px;
+}
+.reward_explain_border{
+    width:100%;
+    padding-left:10%;
+    text-align:left;
+    color:#171714;
+    border-bottom:10px solid #eee;
+}
+.reward_li{
+    padding-bottom:13px;
+}
+.reward_num{
+    text-align:center;
+    font-size: 16px;
+    padding:20px 0;
+}
+.bottombox{
+    position: fixed;
+    bottom: 0px;
+    height: 40px;
+    width: 100%;
+    z-index: 999;
+   background: #fff;
+   color:#fff;
+}
+.bottombox-l{
+    float: left;
+    width: 40%;
+    background-color: #aaa;
+    text-align: center;
+    height: 40px;
+    line-height: 35px;
+}
+
+.bottombox-r{
+   height:40px;
+    float: right;
+    width: 60%;
+    text-align: center;
+    background-color: #e99971;
+}
+.bottombox-r span{
+    display: block;
+    margin-top: 5px;
+    height: 30px;
+    line-height: 30px;
+}
+.range_bottom{
+    font-size: 13px;
+    color:#aaa;
+    text-align: center;
+    padding:20px 0;
+}

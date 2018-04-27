@@ -1,0 +1,41 @@
+<extend name="_Layout/base_tabbar"/>
+
+<block name="content">
+	<volist name="feed_list" id="feed_info">
+		<div class="weui_panel weui_panel_access">
+		    <div class="weui_panel_hd">{$feed_info['feed_ctime']}</div>
+		    <div class="weui_panel_bd">
+		        <a class="weui_media_box weui_media_appmsg imgsView" href="javascript:void(0);" data-pics="{$feed_info['pics_url']}">
+		            <div class="weui_media_hd">
+		                <img class="weui_media_appmsg_thumb" src="{$feed_info['member']['member_avatar']}" alt="">
+		            </div>
+		            <div class="weui_media_bd">
+		            	<h4 class="weui_media_title">{$feed_info['member']['member_name']}</h4>
+		                <p class="weui_media_desc">{$feed_info['feed_content']}</p>
+		            </div>
+		        </a>
+		    </div>
+		    <a class="weui_panel_ft confirm" href="javascript:void(0);" data-msg="是否显示?" data-href="{:U('Index/show', array('feed_id'=>$feed_info['feed_id']))}">显示</a>
+		    <a class="weui_panel_ft confirm" href="javascript:void(0);" data-msg="是否放入回收站?" data-href="{:U('Index/doDelete', array('feed_id'=>$feed_info['feed_id']))}">回收站</a>
+		</div>	
+	</volist>
+	
+    <notempty name="data_page">
+		<ul class="pagination">{$data_page}</ul>
+    </notempty>	
+</block>
+
+<block name="script">
+	<script>
+		$(function(){
+			$('body').on('click', '.confirm', function(){
+				var url = $(this).data('href');
+				var msg = $(this).data('msg');
+				
+				$.weui.confirm(msg, function(){
+					location = url;
+				})
+			});			
+		});
+	</script>
+</block>
